@@ -7,11 +7,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
+import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseACL;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -34,10 +38,26 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Binar_HexaOperationen");
+        query.whereExists("question");
+        query.findInBackground(new FindCallback<ParseObject>() {
+          @Override
+            public void done(List<ParseObject> list, ParseException e) {
+              if (list.size() > 0) {
+                  for (int i = 0; i < list.size(); i++) {
+
+                      ParseObject p = list.get(i);
+                      String question = p.getString("question");
+                      System.out.println(question);
 
 
 
-    }
+
+                  }}
+        }});
+
+
+      }
 
 
     @Override
