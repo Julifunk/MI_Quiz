@@ -21,40 +21,21 @@ public class MainActivity extends ActionBarActivity {
 
     private Button eimi;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(this, "BUfWzIhsninLF29zGCoEz7puv93amubRhTUmfY63", "L36y1hNcNkMI5qVmz8ytD8DsrqnSwrYzmi9gmCYM");
-        setContentView (R.layout.activity_main);
-
+//        Parse.enableLocalDatastore(this);
+//      Parse.initialize(this, "BUfWzIhsninLF29zGCoEz7puv93amubRhTUmfY63", "L36y1hNcNkMI5qVmz8ytD8DsrqnSwrYzmi9gmCYM");
         eimi = (Button) findViewById (R.id.button);
         eimi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),Ques.class);
+                Intent i = new Intent(getApplicationContext(), Ques.class);
                 startActivity(i);
             }
         });
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Binar_HexaOperationen");
-        query.whereExists("question");
-        query.findInBackground(new FindCallback<ParseObject>() {
-          @Override
-            public void done(List<ParseObject> list, ParseException e) {
-              if (list.size() > 0) {
-                  for (int i = 0; i < list.size(); i++) {
-
-                      ParseObject p = list.get(i);
-                      String question = p.getString("question");
-                      System.out.println(question);
-
-
-
-
-                  }}
-        }});
 
 
       }
