@@ -17,33 +17,46 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp">
+        android:layout_marginLeft="10dp"
+        >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/option_a"
+        android:background="@color/Red"
+        android:textColor="@color/White"
+
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="New Text"
         android:id="@+id/option_b"
+        android:background="@color/Red"
+        android:textColor="@color/White"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="New Text"
-        android:id="@+id/option_c" />
+        android:id="@+id/option_c"
+        android:background="@color/Red"
+        android:textColor="@color/White"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="New Text"
-        android:id="@+id/option_d" />
+        android:id="@+id/option_d"
+        android:background="@color/Red"
+        android:textColor="@color/White"/>
 
         <TextView
             android:layout_width="wrap_content"
