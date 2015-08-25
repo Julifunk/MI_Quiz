@@ -1,5 +1,9 @@
 package com.example.julia.test;
 
+import com.parse.ParseObject;
+
+import java.util.List;
+
 /**
  * Created by Julia on 19.08.2015.
  */
@@ -11,6 +15,11 @@ public class QuestionsObject {
     String option_d;
     String correct_answer;
 
+    private static final String KEY_QUESTION = "question";
+    private static final String KEY_ANSWER_OPETIONS = "answerOptions";
+    private static final String KEY_CORRECT_ANSWER = "correctAnswer";
+
+    ParseObject parseObject;
 
     public QuestionsObject(String question, String option_a, String option_b, String option_c, String option_d, String correct_answer){
         this.question= question;
@@ -22,9 +31,21 @@ public class QuestionsObject {
 
     }
 
-    public String getQuestion(){
-        return question;
+    public QuestionsObject(ParseObject parseObject) {
+        this.parseObject = parseObject;
+        List<String> answerOptions = parseObject.getList(KEY_ANSWER_OPETIONS);
+        this.option_a = answerOptions.get(0);
+        this.option_b = answerOptions.get(1);
+        this.option_c = answerOptions.get(2);
+        this.option_d = answerOptions.get(3);
+        this.correct_answer = parseObject.getString(KEY_CORRECT_ANSWER);
     }
+
+    public String getQuestion(){
+        return parseObject.getString(KEY_QUESTION);
+    }
+
+
     public String getOptionA(){
         return option_a;
     }

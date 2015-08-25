@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.parse.FindCallback;
 import com.parse.Parse;
@@ -19,6 +20,7 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity {
 
     private Button eimi;
+    private TextView choose;
     ParseObject object;
 
     @Override
@@ -29,38 +31,18 @@ public class MainActivity extends ActionBarActivity {
         Parse.initialize(this, "BUfWzIhsninLF29zGCoEz7puv93amubRhTUmfY63", "L36y1hNcNkMI5qVmz8ytD8DsrqnSwrYzmi9gmCYM");
         setContentView(R.layout.activity_main);
 
+        choose = (TextView) findViewById(R.id.choose);
 
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Binar_HexaOperationen");
-        query.whereExists("question");
-        query.findInBackground(new FindCallback<ParseObject>() {
-          @Override
-            public void done(List<ParseObject> list, ParseException e) {
-              if (list.size() > 0) {
-                  for (int i = 0; i < list.size(); i++) {
-
-                      object = list.get(0);
-                      object.pinInBackground();
-
-                      eimi = (Button) findViewById (R.id.button);
-                      eimi.setOnClickListener(new View.OnClickListener() {
-                          @Override
-                          public void onClick(View v) {
-                              Intent i = new Intent(getApplicationContext(),Ques.class);
-                              i.putExtra("objectId", object.getObjectId());
-                              startActivity(i);
-                          }
-                      });
-
-                      ParseObject p = list.get(i);
-                      String question = p.getString("question");
-                      System.out.println(question);
-
-
-
-
-                  }}
-        }});
+        eimi = (Button) findViewById (R.id.button);
+        eimi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),Ques.class);
+                i.putExtra("subject", "EIMI");
+                i.putExtra("set", "1");
+                startActivity(i);
+            }
+        });
 
 
       }
