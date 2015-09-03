@@ -1,21 +1,27 @@
 package com.example.julia.test;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.parse.FindCallback;
 import com.parse.Parse;
-import com.parse.ParseACL;
+import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParseUser;
+import com.parse.ParseQuery;
+
+import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
     private Button eimi;
+    private TextView choose;
+    ParseObject object;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,21 +29,23 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "BUfWzIhsninLF29zGCoEz7puv93amubRhTUmfY63", "L36y1hNcNkMI5qVmz8ytD8DsrqnSwrYzmi9gmCYM");
-        setContentView (R.layout.activity_main);
+        setContentView(R.layout.activity_main);
+
+        choose = (TextView) findViewById(R.id.choose);
 
         eimi = (Button) findViewById (R.id.button);
         eimi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),Ques.class);
+                i.putExtra("subject", "EIMI");
+                i.putExtra("set", "1");
                 startActivity(i);
             }
         });
 
 
-
-
-    }
+      }
 
 
     @Override
