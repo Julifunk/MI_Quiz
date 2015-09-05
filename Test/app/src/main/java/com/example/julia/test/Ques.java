@@ -1,5 +1,8 @@
 package com.example.julia.test;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -56,12 +59,13 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
 
         option_a.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
 
                 if (isCorrectAnswer(option_a.getText().toString())) {
-                   correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
-                }
+                    correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
+                                 }
 
                 currentQuestion++;
                 setTextFieldWithQuestionAtIndex(currentQuestion);
@@ -72,6 +76,12 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         option_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (isCorrectAnswer(option_b.getText().toString())) {
+                    correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
+                            }
+
+                currentQuestion++;
+                setTextFieldWithQuestionAtIndex(currentQuestion);
 
             }
         });
@@ -80,6 +90,12 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         option_c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (isCorrectAnswer(option_b.getText().toString())) {
+                    correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
+                }
+
+                currentQuestion++;
+                setTextFieldWithQuestionAtIndex(currentQuestion);
 
 
             }
@@ -89,7 +105,12 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         option_d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (isCorrectAnswer(option_b.getText().toString())) {
+                    correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
+                }
 
+                currentQuestion++;
+                setTextFieldWithQuestionAtIndex(currentQuestion);
 
             }
         });

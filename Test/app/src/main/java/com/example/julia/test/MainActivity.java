@@ -27,13 +27,22 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        connectWithParse();
+        setupLayoutElements();
+       }
+
+
+
+    //sets up the connection to parse.com
+    private void connectWithParse() {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "BUfWzIhsninLF29zGCoEz7puv93amubRhTUmfY63", "L36y1hNcNkMI5qVmz8ytD8DsrqnSwrYzmi9gmCYM");
-        setContentView(R.layout.activity_main);
+    }
 
+    private void setupLayoutElements(){
         choose = (TextView) findViewById(R.id.choose);
-
         eimi = (Button) findViewById (R.id.button);
+
         eimi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,10 +52,7 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(i);
             }
         });
-
-
-      }
-
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
