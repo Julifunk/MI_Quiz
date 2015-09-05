@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Yellow">
+    android:background="@color/White"
+    >
 
 
     <TextView
@@ -11,70 +12,66 @@
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/question"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
         android:textSize="20dp"
-        android:background="@color/Blue"
+        android:background="@drawable/questions_background"
         android:textColor="@color/Black"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:layout_weight="0.3"
+        android:layout_margin="0dp" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="70dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        >
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/option_a"
-        android:background="@color/Blue"
+        android:background="@drawable/background_answer"
         android:textColor="@color/Black"
         android:textSize="20dp"
         android:gravity="center"
-
+        android:layout_weight="0.15"
         />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+
         android:text="New Text"
         android:id="@+id/option_b"
-        android:background="@color/Blue"
+        android:background="@drawable/background_answer"
         android:textColor="@color/Black"
         android:textSize="20dp"
         android:gravity="center"
+        android:layout_weight="0.15"
         />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+
         android:text="New Text"
         android:id="@+id/option_c"
-        android:background="@color/Blue"
+        android:background="@drawable/background_answer"
         android:textColor="@color/Black"
         android:textSize="20dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:layout_weight="0.15"/>
 
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="New Text"
         android:id="@+id/option_d"
-        android:background="@color/Blue"
+        android:background="@drawable/background_answer"
         android:textColor="@color/Black"
         android:textSize="20dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:layout_weight="0.15"/>
 
 
-    </LinearLayout>
+
 </LinearLayout>

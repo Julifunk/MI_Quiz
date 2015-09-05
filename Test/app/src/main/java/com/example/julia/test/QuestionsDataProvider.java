@@ -13,15 +13,8 @@ import java.util.List;
  */
 public class QuestionsDataProvider {
 
-    private ArrayList<QuestionsObject> questionsList = new ArrayList<QuestionsObject>();
-
     private QuestionsDataProviderListener listener;
 
-    public QuestionsDataProvider(ArrayList<QuestionsObject> questionsList) {
-        this.questionsList = questionsList;
-    }
-
-    // Der da!
     public QuestionsDataProvider() {
 
     }
@@ -61,7 +54,7 @@ public class QuestionsDataProvider {
 
     private ArrayList<QuestionsObject> parseQuestionsAsArrayList(List<ParseObject> parseQuestions) {
         ArrayList<QuestionsObject> questions = new ArrayList<>();
-        System.out.println(parseQuestions.size());
+
         for (ParseObject object : parseQuestions) {
             questions.add(new QuestionsObject(object));
         }
