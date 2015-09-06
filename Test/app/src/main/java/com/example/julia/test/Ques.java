@@ -3,6 +3,7 @@ package com.example.julia.test;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -19,7 +20,8 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private TextView option_b;
     private TextView option_c;
     private TextView option_d;
-    private int counter;
+    public int counterOfAnsweredQuestions;
+    public int counterOfCorrectlyAnsweredQuestion;
 
     ArrayList<QuestionsObject> correctlyAnsweredQuestions = new ArrayList<>();
     ArrayList<QuestionsObject> questions = new ArrayList<>();
@@ -34,7 +36,6 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_questions);
         getUIReferences();
-
         String subject = getIntent().getStringExtra("subject");
         String set = getIntent().getStringExtra("set");
 
@@ -51,72 +52,117 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         option_d = (TextView) findViewById(R.id.option_d);
 
 
+
         option_a.setOnClickListener(new View.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
+
             public void onClick(View view) {
                 if (isCorrectAnswer(option_a.getText().toString())) {
-
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
-                             }
+                    counterOfCorrectlyAnsweredQuestion++;
+                    option_a.setBackground(getDrawable(R.drawable.background_right_answer));
+                    }
+                else{
+                    option_a.setBackground(getDrawable(R.drawable.background_wrong_answer));
+                }
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        option_a.setBackground(getDrawable(R.drawable.background_answer));
+                        currentQuestion++;
+                        setTextFieldWithQuestionAtIndex(currentQuestion);
+                        counterOfAnsweredQuestions++;
+                    }
+                }, 500);
 
-                currentQuestion++;
-                setTextFieldWithQuestionAtIndex(currentQuestion);
             }
         });
 
 
         option_b.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View view) {
-
-                if (isCorrectAnswer(option_b.getText().toString())) {
-
-                    correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
-                            }
-
-                currentQuestion++;
-                setTextFieldWithQuestionAtIndex(currentQuestion);
-
-            }
-        });
-
-
-        option_c.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
-
                 if (isCorrectAnswer(option_b.getText().toString())) {
-
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
-
+                    counterOfCorrectlyAnsweredQuestion++;
+                    option_b.setBackground(getDrawable(R.drawable.background_right_answer));
                 }
-
-                currentQuestion++;
-                setTextFieldWithQuestionAtIndex(currentQuestion);
-
+                else{
+                    option_b.setBackground(getDrawable(R.drawable.background_wrong_answer));
+                }
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        option_b.setBackground(getDrawable(R.drawable.background_answer));
+                        currentQuestion++;
+                        setTextFieldWithQuestionAtIndex(currentQuestion);
+                        counterOfAnsweredQuestions++;
+                    }
+                }, 500);
 
             }
         });
 
+        option_c.setOnClickListener(new View.OnClickListener(){
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+
+            public void onClick(View view) {
+                if (isCorrectAnswer(option_c.getText().toString())) {
+                    correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
+                    counterOfCorrectlyAnsweredQuestion++;
+                    option_c.setBackground(getDrawable(R.drawable.background_right_answer));
+                }
+                else{
+                    option_c.setBackground(getDrawable(R.drawable.background_wrong_answer));
+                }
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        option_c.setBackground(getDrawable(R.drawable.background_answer));
+                        currentQuestion++;
+                        setTextFieldWithQuestionAtIndex(currentQuestion);
+                        counterOfAnsweredQuestions++;
+                    }
+                }, 500);
+
+            }
+        });
 
         option_d.setOnClickListener(new View.OnClickListener() {
 
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
 
             public void onClick(View view) {
-
-                if (isCorrectAnswer(option_b.getText().toString())) {
-
+                if (isCorrectAnswer(option_d.getText().toString())) {
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
+                    counterOfCorrectlyAnsweredQuestion++;
+                    option_d.setBackground(getDrawable(R.drawable.background_right_answer));
                 }
-
-                currentQuestion++;
-                setTextFieldWithQuestionAtIndex(currentQuestion);
+                else{
+                    option_d.setBackground(getDrawable(R.drawable.background_wrong_answer));
+                }
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        option_d.setBackground(getDrawable(R.drawable.background_answer));
+                        currentQuestion++;
+                        setTextFieldWithQuestionAtIndex(currentQuestion);
+                        counterOfAnsweredQuestions++;
+                    }
+                }, 500);
 
             }
         });
+
+
     }
 
     private void setTextFieldWithQuestionAtIndex(int index) {
@@ -137,7 +183,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     }
 
     private String getAnswerOfCurrentQuestion() {
-        QuestionsObject currentQuestion = questions.get(this.currentQuestion);
+        QuestionsObject currentQuestion = questions.get(this.currentQuestion-1);
         return currentQuestion.getCorrectAnswer();
     }
 
