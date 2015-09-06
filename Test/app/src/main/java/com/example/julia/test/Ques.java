@@ -47,7 +47,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
         questionsDataProvider = new QuestionsDataProvider();
         questionsDataProvider.setQuestionsDataProviderListener(this);
-        questionsDataProvider.getQuestionsFromSubjectAndSet(subject, set);
+        questionsDataProvider.getQuestionsFromSubject(subject);
     }
 
     private void getUIReferences() {
@@ -62,10 +62,10 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
-
                 if (isCorrectAnswer(option_a.getText().toString())) {
+
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
-                                 }
+                             }
 
                 currentQuestion++;
                 setTextFieldWithQuestionAtIndex(currentQuestion);
@@ -75,8 +75,11 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
         option_b.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View view) {
+
                 if (isCorrectAnswer(option_b.getText().toString())) {
+
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
                             }
 
@@ -90,8 +93,11 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         option_c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (isCorrectAnswer(option_b.getText().toString())) {
+
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
+
                 }
 
                 currentQuestion++;
@@ -103,9 +109,13 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
 
         option_d.setOnClickListener(new View.OnClickListener() {
+
             @Override
+
             public void onClick(View view) {
+
                 if (isCorrectAnswer(option_b.getText().toString())) {
+
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
                 }
 
