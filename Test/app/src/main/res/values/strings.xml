@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">Test</string>
+    <string name="app_name">MeInQuiz</string>
     <string name="action_settings">Settings</string>
     <string name="eimi">EIMI</string>
-    <string name="choose">Please, choose your subject.. </string>
+    <string name="adp">ADP</string>
+    <string name="choose">Wähle ein Fach aus: </string>
+    <string name="starting_game">Quiz starten</string>
+    <string name="stats">Statistik</string>
 </resources>

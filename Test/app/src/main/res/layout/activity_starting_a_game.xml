@@ -8,26 +8,37 @@
 
 
 
-
     <TextView
-        android:id="@+id/starting_game"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/starting_game"
+        android:text="@string/choose"
+        android:id="@+id/choose"
+        android:layout_marginTop="15dp"
+        android:textSize="35dp"
+        android:textColor="@color/Black"
+        android:gravity="center"
+        android:background="@drawable/border_of_buttons"
+        />
+    <TextView
+        android:id="@+id/eimi"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/eimi"
         android:textSize="25dp"
         android:textColor="@color/Black"
         android:textStyle="bold"
-        android:layout_marginTop="150dp"
+        android:layout_below="@+id/choose"
+        android:layout_marginTop="30dp"
         android:background="@drawable/border_of_buttons"
         android:gravity="center"
         />
     <TextView
-        android:id="@+id/stats"
+        android:id="@+id/adp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/starting_game"
+        android:layout_below="@+id/eimi"
         android:background="@drawable/border_of_buttons"
-        android:text="@string/stats"
+        android:text="@string/adp"
         android:textStyle="bold"
         android:textColor="@color/Black"
         android:textSize="25dp"

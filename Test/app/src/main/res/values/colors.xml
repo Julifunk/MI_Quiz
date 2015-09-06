@@ -8,6 +8,8 @@
     <color name="Blue">#ff47d6ff</color>
     <color name="Black">#ff141414</color>
     <color name="Yellow">#ffffff91</color>
-
+    <color name="Heidenelkenrot">#9C004B</color>
+    <color name="background_color">#ffffff</color>
+    <color name="border_color">#ff141414</color>
 
 </resources>
