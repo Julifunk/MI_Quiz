@@ -21,7 +21,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private TextView option_c;
     private TextView option_d;
     public int counterOfAnsweredQuestions;
-    public int counterOfCorrectlyAnsweredQuestion;
+    public int counterOfCorrectlyAnsweredQuestions;
 
     ArrayList<QuestionsObject> correctlyAnsweredQuestions = new ArrayList<>();
     ArrayList<QuestionsObject> questions = new ArrayList<>();
@@ -60,7 +60,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             public void onClick(View view) {
                 if (isCorrectAnswer(option_a.getText().toString())) {
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
-                    counterOfCorrectlyAnsweredQuestion++;
+                    counterOfCorrectlyAnsweredQuestions++;
                     option_a.setBackground(getDrawable(R.drawable.background_right_answer));
                     }
                 else{
@@ -87,7 +87,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             public void onClick(View view) {
                 if (isCorrectAnswer(option_b.getText().toString())) {
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
-                    counterOfCorrectlyAnsweredQuestion++;
+                    counterOfCorrectlyAnsweredQuestions++;
                     option_b.setBackground(getDrawable(R.drawable.background_right_answer));
                 }
                 else{
@@ -114,7 +114,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             public void onClick(View view) {
                 if (isCorrectAnswer(option_c.getText().toString())) {
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
-                    counterOfCorrectlyAnsweredQuestion++;
+                    counterOfCorrectlyAnsweredQuestions++;
                     option_c.setBackground(getDrawable(R.drawable.background_right_answer));
                 }
                 else{
@@ -142,7 +142,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             public void onClick(View view) {
                 if (isCorrectAnswer(option_d.getText().toString())) {
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
-                    counterOfCorrectlyAnsweredQuestion++;
+                    counterOfCorrectlyAnsweredQuestions++;
                     option_d.setBackground(getDrawable(R.drawable.background_right_answer));
                 }
                 else{
@@ -195,4 +195,14 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         System.out.println(this.questions.size());
         setTextFieldWithQuestionAtIndex(this.currentQuestion);
     }
+
+    public int getNumberOfAnsweredQuestions(){
+     return counterOfAnsweredQuestions;
+    }
+
+    public int getNumberOfCorrectAnswers(){
+        return counterOfCorrectlyAnsweredQuestions;
+    }
+
+
 }
