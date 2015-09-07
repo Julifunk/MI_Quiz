@@ -45,6 +45,19 @@
         android:gravity="center"
         android:layout_marginTop="30dp"
         />
+    <TextView
+    android:id="@+id/hci"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/adp"
+    android:background="@drawable/border_of_buttons"
+    android:text="@string/hci"
+    android:textStyle="bold"
+    android:textColor="@color/Black"
+    android:textSize="25dp"
+    android:gravity="center"
+    android:layout_marginTop="30dp"
+    />
 
 
 </RelativeLayout>
