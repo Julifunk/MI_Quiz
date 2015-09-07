@@ -1,10 +1,13 @@
 package com.example.julia.test;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,8 +23,8 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private TextView option_b;
     private TextView option_c;
     private TextView option_d;
-    public int counterOfAnsweredQuestions;
-    public int counterOfCorrectlyAnsweredQuestions;
+    private int counterOfAnsweredQuestions;
+    private int counterOfCorrectlyAnsweredQuestions;
 
     ArrayList<QuestionsObject> correctlyAnsweredQuestions = new ArrayList<>();
     ArrayList<QuestionsObject> questions = new ArrayList<>();
@@ -204,5 +207,29 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         return counterOfCorrectlyAnsweredQuestions;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent i = new Intent(getApplicationContext(),Statistics.class);
+            i.putExtra("NumberQuestions", counterOfAnsweredQuestions );
+            i.putExtra("CorrectAnswers", counterOfCorrectlyAnsweredQuestions);
+            startActivity(i);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
