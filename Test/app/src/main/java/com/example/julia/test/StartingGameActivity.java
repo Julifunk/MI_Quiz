@@ -15,7 +15,8 @@ public class StartingGameActivity extends ActionBarActivity {
 
     private TextView eimi;
     private TextView adp;
-    private TextView choose;
+    private TextView hci;
+  
     ParseObject object;
 
     @Override
@@ -35,16 +36,16 @@ public class StartingGameActivity extends ActionBarActivity {
     }
 
     private void setupLayoutElements(){
-        choose = (TextView) findViewById(R.id.choose);
+
         eimi = (TextView) findViewById (R.id.eimi);
         adp = (TextView) findViewById(R.id.adp);
+        hci = (TextView) findViewById(R.id.hci);
 
         eimi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),Ques.class);
                 i.putExtra("subject", "EIMI");
-                i.putExtra("set", "1");
                 startActivity(i);
             }
         });
@@ -53,7 +54,14 @@ public class StartingGameActivity extends ActionBarActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),Ques.class);
                 i.putExtra("subject", "ADP");
-                i.putExtra("set", "2");
+                startActivity(i);
+            }
+        });
+        hci.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),Ques.class);
+                i.putExtra("subject","HCI");
                 startActivity(i);
             }
         });
