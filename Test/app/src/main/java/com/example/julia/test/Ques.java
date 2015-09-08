@@ -2,6 +2,7 @@ package com.example.julia.test;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -65,16 +66,16 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                 if (isCorrectAnswer(option_a.getText().toString())) {
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
                     counterOfCorrectlyAnsweredQuestions++;
-                    option_a.setBackground(getDrawable(R.drawable.background_right_answer));
+                    option_a.setBackground(getDrawable(R.drawable.progress_bar_positive));
                     }
                 else{
-                    option_a.setBackground(getDrawable(R.drawable.background_wrong_answer));
+                    option_a.setBackground(getDrawable(R.drawable.progress_bar_negative));
                 }
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        option_a.setBackground(getDrawable(R.drawable.background_answer));
+                        option_a.setBackgroundColor(Color.WHITE);
                         currentQuestion++;
                         setTextFieldWithQuestionAtIndex(currentQuestion);
                         counterOfAnsweredQuestions++;
@@ -92,16 +93,16 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                 if (isCorrectAnswer(option_b.getText().toString())) {
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
                     counterOfCorrectlyAnsweredQuestions++;
-                    option_b.setBackground(getDrawable(R.drawable.background_right_answer));
+                    option_b.setBackground(getDrawable(R.drawable.progress_bar_positive));
                 }
                 else{
-                    option_b.setBackground(getDrawable(R.drawable.background_wrong_answer));
+                    option_b.setBackground(getDrawable(R.drawable.progress_bar_negative));
                 }
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        option_b.setBackground(getDrawable(R.drawable.background_answer));
+                        option_b.setBackgroundColor(Color.WHITE);
                         currentQuestion++;
                         setTextFieldWithQuestionAtIndex(currentQuestion);
                         counterOfAnsweredQuestions++;
@@ -119,16 +120,16 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                 if (isCorrectAnswer(option_c.getText().toString())) {
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
                     counterOfCorrectlyAnsweredQuestions++;
-                    option_c.setBackground(getDrawable(R.drawable.background_right_answer));
+                    option_c.setBackground(getDrawable(R.drawable.progress_bar_positive));
                 }
                 else{
-                    option_c.setBackground(getDrawable(R.drawable.background_wrong_answer));
+                    option_c.setBackground(getDrawable(R.drawable.progress_bar_negative));
                 }
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        option_c.setBackground(getDrawable(R.drawable.background_answer));
+                        option_c.setBackgroundColor(Color.WHITE);
                         currentQuestion++;
                         setTextFieldWithQuestionAtIndex(currentQuestion);
                         counterOfAnsweredQuestions++;
@@ -147,16 +148,16 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                 if (isCorrectAnswer(option_d.getText().toString())) {
                     correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
                     counterOfCorrectlyAnsweredQuestions++;
-                    option_d.setBackground(getDrawable(R.drawable.background_right_answer));
+                    option_d.setBackground(getDrawable(R.drawable.progress_bar_positive));
                 }
                 else{
-                    option_d.setBackground(getDrawable(R.drawable.background_wrong_answer));
+                    option_d.setBackground(getDrawable(R.drawable.progress_bar_negative));
                 }
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        option_d.setBackground(getDrawable(R.drawable.background_answer));
+                        option_d.setBackgroundColor(Color.WHITE);
                         currentQuestion++;
                         setTextFieldWithQuestionAtIndex(currentQuestion);
                         counterOfAnsweredQuestions++;
