@@ -23,6 +23,9 @@ public class Statistics extends ActionBarActivity{
     private ImageView correctAnswers;
     private ImageView wrongAnswers;
     private Display display;
+    private TextView subject;
+    private TextView percentage;
+
     @Override
     protected void onCreate (Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -30,7 +33,17 @@ public class Statistics extends ActionBarActivity{
         display = getWindowManager().getDefaultDisplay();
         correctAnswers = (ImageView) findViewById(R.id.progress);
         wrongAnswers = (ImageView) findViewById(R.id.missing);
+        subject = (TextView)findViewById(R.id.Subject);
+        percentage = (TextView)findViewById(R.id.Percentage);
+
         getStatisticsFromQuiz();
+        setTextView();
+
+    }
+
+    private void setTextView() {
+        subject.setText(getIntent().getStringExtra("Subject")+ ": ");
+        percentage.setText(" "+ numberOfcorrectlyAnsweredQuestions*100/numberOfAnsweredQuestions + "%");
 
     }
 
