@@ -21,14 +21,14 @@
             android:layout_height="fill_parent"
 
             android:id="@+id/progress"
-            android:background="@drawable/background_right_answer"/>
+            android:background="@drawable/progress_bar_positive"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/missing"
 
-            android:background="@drawable/background_wrong_answer"/>
+            android:background="@drawable/progress_bar_negative"/>
     </LinearLayout>
 
 

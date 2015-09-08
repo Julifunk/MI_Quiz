@@ -170,7 +170,10 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
     private void setTextFieldWithQuestionAtIndex(int index) {
         if (index > questions.size()) {
-            // nächste Activity
+            Intent i = new Intent(getApplicationContext(), Statistics.class);
+            i.putExtra("NumberQuestions", counterOfAnsweredQuestions );
+            i.putExtra("CorrectAnswers", counterOfCorrectlyAnsweredQuestions);
+            startActivity(i);
             return;
         }
         QuestionsObject currentQuestion = this.questions.get(index - 1);
@@ -197,14 +200,6 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         this.questions = questions;
         System.out.println(this.questions.size());
         setTextFieldWithQuestionAtIndex(this.currentQuestion);
-    }
-
-    public int getNumberOfAnsweredQuestions(){
-     return counterOfAnsweredQuestions;
-    }
-
-    public int getNumberOfCorrectAnswers(){
-        return counterOfCorrectlyAnsweredQuestions;
     }
 
     @Override
