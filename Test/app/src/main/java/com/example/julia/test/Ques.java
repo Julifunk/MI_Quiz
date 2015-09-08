@@ -25,6 +25,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private TextView option_d;
     private int counterOfAnsweredQuestions;
     private int counterOfCorrectlyAnsweredQuestions;
+    private String subject;
 
     ArrayList<QuestionsObject> correctlyAnsweredQuestions = new ArrayList<>();
     ArrayList<QuestionsObject> questions = new ArrayList<>();
@@ -39,7 +40,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_questions);
         getUIReferences();
-        String subject = getIntent().getStringExtra("subject");
+        subject = getIntent().getStringExtra("subject");
         String set = getIntent().getStringExtra("set");
 
         questionsDataProvider = new QuestionsDataProvider();
@@ -170,7 +171,11 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
     private void setTextFieldWithQuestionAtIndex(int index) {
         if (index > questions.size()) {
-            // nächste Activity
+            Intent i = new Intent(getApplicationContext(), Statistics.class);
+            i.putExtra("NumberQuestions", counterOfAnsweredQuestions );
+            i.putExtra("CorrectAnswers", counterOfCorrectlyAnsweredQuestions);
+            i.putExtra("Subject", subject);
+            startActivity(i);
             return;
         }
         QuestionsObject currentQuestion = this.questions.get(index - 1);
@@ -199,14 +204,6 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         setTextFieldWithQuestionAtIndex(this.currentQuestion);
     }
 
-    public int getNumberOfAnsweredQuestions(){
-     return counterOfAnsweredQuestions;
-    }
-
-    public int getNumberOfCorrectAnswers(){
-        return counterOfCorrectlyAnsweredQuestions;
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -226,6 +223,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             Intent i = new Intent(getApplicationContext(),Statistics.class);
             i.putExtra("NumberQuestions", counterOfAnsweredQuestions );
             i.putExtra("CorrectAnswers", counterOfCorrectlyAnsweredQuestions);
+            i.putExtra("Subject", subject);
             startActivity(i);
             return true;
         }
