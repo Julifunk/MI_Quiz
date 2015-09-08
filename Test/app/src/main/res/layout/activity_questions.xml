@@ -1,76 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="100"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/White"
+    android:background="@color/Heidenelkenrot"
     >
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/question"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:textSize="20dp"
-        android:background="@drawable/questions_background"
-        android:textColor="@color/Black"
-        android:gravity="center"
-        android:layout_weight="0.3"
-        android:layout_margin="0dp" />
+    <RelativeLayout
+        android:id="@+id/questions"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40"
+        android:layout_margin="2dp"
+        >
 
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/option_a"
-        android:background="@drawable/background_answer"
-        android:textColor="@color/Black"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:layout_weight="0.15"
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="New Text"
+            android:id="@+id/question"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:background="@drawable/border_of_question"
+            android:textSize="20dp"
+            android:textColor="@color/Black"
+            android:gravity="center"
+            android:layout_margin="0dp"
         />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-
-        android:text="New Text"
-        android:id="@+id/option_b"
-        android:background="@drawable/background_answer"
-        android:textColor="@color/Black"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:layout_weight="0.15"
-        />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-
-        android:text="New Text"
-        android:id="@+id/option_c"
-        android:background="@drawable/background_answer"
-        android:textColor="@color/Black"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:layout_weight="0.15"/>
+    </RelativeLayout>
 
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/option_d"
-        android:background="@drawable/background_answer"
-        android:textColor="@color/Black"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:layout_weight="0.15"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="New Text"
+            android:id="@+id/option_a"
+            android:textColor="@color/Black"
+            android:background="@color/White"
+            android:layout_margin="3dp"
+            android:textSize="20dp"
+            android:gravity="center"
+
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="New Text"
+            android:id="@+id/option_b"
+            android:textColor="@color/Black"
+            android:background="@color/White"
+            android:layout_margin="3dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="New Text"
+            android:id="@+id/option_c"
+            android:textColor="@color/Black"
+            android:background="@color/White"
+            android:layout_margin="3dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="New Text"
+            android:id="@+id/option_d"
+            android:textColor="@color/Black"
+            android:background="@color/White"
+            android:layout_margin="3dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            />
+
+    </RelativeLayout>
+
+
+
 
 
 
