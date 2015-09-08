@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
+import java.util.Set;
+
 public class StartingGameActivity extends ActionBarActivity {
 
     private TextView eimi;
@@ -44,7 +46,7 @@ public class StartingGameActivity extends ActionBarActivity {
         eimi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),Ques.class);
+                Intent i = new Intent(getApplicationContext(),SetActivity.class);
                 i.putExtra("subject", "EIMI");
                 startActivity(i);
             }
@@ -52,7 +54,7 @@ public class StartingGameActivity extends ActionBarActivity {
         adp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),Ques.class);
+                Intent i = new Intent(getApplicationContext(),SetActivity.class);
                 i.putExtra("subject", "ADP");
                 startActivity(i);
             }
@@ -60,7 +62,7 @@ public class StartingGameActivity extends ActionBarActivity {
         hci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),Ques.class);
+                Intent i = new Intent(getApplicationContext(),SetActivity.class);
                 i.putExtra("subject","HCI");
                 startActivity(i);
             }

@@ -7,4 +7,5 @@
     <string name="choose">Wähle ein Fach aus: </string>
     <string name="starting_game">Quiz starten</string>
     <string name="stats">Statistik</string>
+    <string name="choose1">Wähle ein Set aus:</string>
 </resources>

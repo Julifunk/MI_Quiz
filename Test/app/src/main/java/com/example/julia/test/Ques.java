@@ -44,7 +44,8 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
         questionsDataProvider = new QuestionsDataProvider();
         questionsDataProvider.setQuestionsDataProviderListener(this);
-        questionsDataProvider.getQuestionsFromSubject(subject);
+        questionsDataProvider.getQuestionsFromSubjectAndSet(subject, set);
+
     }
 
     private void getUIReferences() {
