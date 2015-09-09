@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Julia on 19.08.2015.
@@ -30,8 +31,10 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
     ArrayList<QuestionsObject> correctlyAnsweredQuestions = new ArrayList<>();
     ArrayList<QuestionsObject> questions = new ArrayList<>();
-
+    Random rGen = new Random();
     int currentQuestion = 1;
+    int randomIndex = 1;
+
 
     QuestionsDataProvider questionsDataProvider = new QuestionsDataProvider();
 
@@ -47,6 +50,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         questionsDataProvider = new QuestionsDataProvider();
         questionsDataProvider.setQuestionsDataProviderListener(this);
         questionsDataProvider.getQuestionsFromSubject(subject);
+
     }
 
     private void getUIReferences() {
@@ -64,12 +68,16 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
             public void onClick(View view) {
                 if (isCorrectAnswer(option_a.getText().toString())) {
-                    correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
+                    correctlyAnsweredQuestions.add(questions.get(currentQuestion));
                     counterOfCorrectlyAnsweredQuestions++;
                     option_a.setBackground(getDrawable(R.drawable.progress_bar_positive));
                     }
                 else{
+<<<<<<< HEAD
                     option_a.setBackground(getDrawable(R.drawable.progress_bar_negative));
+=======
+                    option_a.setBackground(getDrawable(R.drawable.progress_bar_positive));
+>>>>>>> origin/dev
                 }
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -77,7 +85,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                     public void run() {
                         option_a.setBackgroundColor(Color.WHITE);
                         currentQuestion++;
-                        setTextFieldWithQuestionAtIndex(currentQuestion);
+                        setTextFieldWithQuestionAtIndex();
                         counterOfAnsweredQuestions++;
                     }
                 }, 500);
@@ -91,7 +99,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             @Override
             public void onClick(View view) {
                 if (isCorrectAnswer(option_b.getText().toString())) {
-                    correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
+                    correctlyAnsweredQuestions.add(questions.get(currentQuestion));
                     counterOfCorrectlyAnsweredQuestions++;
                     option_b.setBackground(getDrawable(R.drawable.progress_bar_positive));
                 }
@@ -104,7 +112,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                     public void run() {
                         option_b.setBackgroundColor(Color.WHITE);
                         currentQuestion++;
-                        setTextFieldWithQuestionAtIndex(currentQuestion);
+                        setTextFieldWithQuestionAtIndex();
                         counterOfAnsweredQuestions++;
                     }
                 }, 500);
@@ -118,7 +126,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
             public void onClick(View view) {
                 if (isCorrectAnswer(option_c.getText().toString())) {
-                    correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
+                    correctlyAnsweredQuestions.add(questions.get(currentQuestion));
                     counterOfCorrectlyAnsweredQuestions++;
                     option_c.setBackground(getDrawable(R.drawable.progress_bar_positive));
                 }
@@ -131,7 +139,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                     public void run() {
                         option_c.setBackgroundColor(Color.WHITE);
                         currentQuestion++;
-                        setTextFieldWithQuestionAtIndex(currentQuestion);
+                        setTextFieldWithQuestionAtIndex();
                         counterOfAnsweredQuestions++;
                     }
                 }, 500);
@@ -146,7 +154,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
             public void onClick(View view) {
                 if (isCorrectAnswer(option_d.getText().toString())) {
-                    correctlyAnsweredQuestions.add(questions.get(currentQuestion - 1));
+                    correctlyAnsweredQuestions.add(questions.get(currentQuestion));
                     counterOfCorrectlyAnsweredQuestions++;
                     option_d.setBackground(getDrawable(R.drawable.progress_bar_positive));
                 }
@@ -159,7 +167,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                     public void run() {
                         option_d.setBackgroundColor(Color.WHITE);
                         currentQuestion++;
-                        setTextFieldWithQuestionAtIndex(currentQuestion);
+                        setTextFieldWithQuestionAtIndex();
                         counterOfAnsweredQuestions++;
                     }
                 }, 500);
@@ -170,8 +178,8 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
     }
 
-    private void setTextFieldWithQuestionAtIndex(int index) {
-        if (index > questions.size()) {
+    private void setTextFieldWithQuestionAtIndex() {
+        if (questions.size() < 1) {
             Intent i = new Intent(getApplicationContext(), Statistics.class);
             i.putExtra("NumberQuestions", counterOfAnsweredQuestions );
             i.putExtra("CorrectAnswers", counterOfCorrectlyAnsweredQuestions);
@@ -179,20 +187,32 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             startActivity(i);
             return;
         }
-        QuestionsObject currentQuestion = this.questions.get(index - 1);
+        rGen = new Random();
+
+        if(this.questions.size()>0) {
+            randomIndex = rGen.nextInt(this.questions.size());
+        }
+        QuestionsObject currentQuestion = this.questions.get(randomIndex);
         question.setText(currentQuestion.getQuestion());
         option_a.setText(currentQuestion.getOptionA());
         option_b.setText(currentQuestion.getOptionB());
         option_c.setText(currentQuestion.getOptionC());
         option_d.setText(currentQuestion.getOptionD());
+        questions.remove(randomIndex);
     }
+
+
+
+
 
     private boolean isCorrectAnswer(String selectedAnswer) {
         return selectedAnswer.equals(getAnswerOfCurrentQuestion());
     }
 
     private String getAnswerOfCurrentQuestion() {
-        QuestionsObject currentQuestion = questions.get(this.currentQuestion-1);
+        QuestionsObject currentQuestion = questions.get(randomIndex);
+        System.out.println("Fraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaage      " +String.valueOf(currentQuestion.getQuestion()));
+        System.out.println("Richtige Antwooooooooooooooooooort       "+ String.valueOf(currentQuestion.getCorrectAnswer()));
         return currentQuestion.getCorrectAnswer();
     }
 
@@ -202,7 +222,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     public void onQuestionsDownloaded(ArrayList<QuestionsObject> questions) {
         this.questions = questions;
         System.out.println(this.questions.size());
-        setTextFieldWithQuestionAtIndex(this.currentQuestion);
+        setTextFieldWithQuestionAtIndex();
     }
 
     @Override

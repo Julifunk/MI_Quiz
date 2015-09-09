@@ -43,7 +43,13 @@ public class Statistics extends ActionBarActivity{
 
     private void setTextView() {
         subject.setText(getIntent().getStringExtra("Subject")+ ": ");
-        percentage.setText(" "+ numberOfcorrectlyAnsweredQuestions*100/numberOfAnsweredQuestions + "%");
+        if(numberOfAnsweredQuestions != 0) {
+            percentage.setText(" " + numberOfcorrectlyAnsweredQuestions * 100 / numberOfAnsweredQuestions + "%");
+        }
+        else{
+            percentage.setText(R.string.error_no_answerded_questions);
+
+        }
 
     }
 
@@ -54,6 +60,11 @@ public class Statistics extends ActionBarActivity{
         System.out.println("Anzahl Fragen:  " + numberOfAnsweredQuestions);
         correctAnswers.requestLayout();
         wrongAnswers.requestLayout();
-        correctAnswers.getLayoutParams().width = Integer.valueOf(display.getWidth()*numberOfcorrectlyAnsweredQuestions/numberOfAnsweredQuestions);
+        if(numberOfAnsweredQuestions != 0) {
+            correctAnswers.getLayoutParams().width = Integer.valueOf(display.getWidth() * numberOfcorrectlyAnsweredQuestions / numberOfAnsweredQuestions);
+        }
+        else{
+            percentage.setText(R.string.error_no_answerded_questions);
+        }
     }
 }
