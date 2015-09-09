@@ -25,11 +25,11 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private TextView option_b;
     private TextView option_c;
     private TextView option_d;
+    private String  correctAnswer;
     private int counterOfAnsweredQuestions;
-    private int counterOfCorrectlyAnsweredQuestions;
+    private int counterOfCorrectAnswers;
     private String subject;
 
-    ArrayList<QuestionsObject> correctlyAnsweredQuestions = new ArrayList<>();
     ArrayList<QuestionsObject> questions = new ArrayList<>();
     Random rGen = new Random();
     int currentQuestion = 1;
@@ -68,16 +68,13 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
             public void onClick(View view) {
                 if (isCorrectAnswer(option_a.getText().toString())) {
-                    correctlyAnsweredQuestions.add(questions.get(currentQuestion));
-                    counterOfCorrectlyAnsweredQuestions++;
+
+                    counterOfCorrectAnswers++;
                     option_a.setBackground(getDrawable(R.drawable.progress_bar_positive));
                     }
                 else{
 
                     option_a.setBackground(getDrawable(R.drawable.progress_bar_negative));
-
-                    option_a.setBackground(getDrawable(R.drawable.progress_bar_positive));
-
                 }
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -99,8 +96,8 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             @Override
             public void onClick(View view) {
                 if (isCorrectAnswer(option_b.getText().toString())) {
-                    correctlyAnsweredQuestions.add(questions.get(currentQuestion));
-                    counterOfCorrectlyAnsweredQuestions++;
+
+                    counterOfCorrectAnswers++;
                     option_b.setBackground(getDrawable(R.drawable.progress_bar_positive));
                 }
                 else{
@@ -126,8 +123,8 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
             public void onClick(View view) {
                 if (isCorrectAnswer(option_c.getText().toString())) {
-                    correctlyAnsweredQuestions.add(questions.get(currentQuestion));
-                    counterOfCorrectlyAnsweredQuestions++;
+
+                    counterOfCorrectAnswers++;
                     option_c.setBackground(getDrawable(R.drawable.progress_bar_positive));
                 }
                 else{
@@ -154,8 +151,8 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
             public void onClick(View view) {
                 if (isCorrectAnswer(option_d.getText().toString())) {
-                    correctlyAnsweredQuestions.add(questions.get(currentQuestion));
-                    counterOfCorrectlyAnsweredQuestions++;
+
+                    counterOfCorrectAnswers++;
                     option_d.setBackground(getDrawable(R.drawable.progress_bar_positive));
                 }
                 else{
@@ -182,7 +179,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         if (questions.size() < 1) {
             Intent i = new Intent(getApplicationContext(), Statistics.class);
             i.putExtra("NumberQuestions", counterOfAnsweredQuestions );
-            i.putExtra("CorrectAnswers", counterOfCorrectlyAnsweredQuestions);
+            i.putExtra("CorrectAnswers", counterOfCorrectAnswers);
             i.putExtra("Subject", subject);
             startActivity(i);
             return;
@@ -198,7 +195,10 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         option_b.setText(currentQuestion.getOptionB());
         option_c.setText(currentQuestion.getOptionC());
         option_d.setText(currentQuestion.getOptionD());
+        correctAnswer = currentQuestion.getCorrectAnswer();
+        System.out.println("Korrekte Antwort von currentQuestion:       " + correctAnswer);
         questions.remove(randomIndex);
+        System.out.println(this.questions.size());
     }
 
 
@@ -206,14 +206,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
 
     private boolean isCorrectAnswer(String selectedAnswer) {
-        return selectedAnswer.equals(getAnswerOfCurrentQuestion());
-    }
-
-    private String getAnswerOfCurrentQuestion() {
-        QuestionsObject currentQuestion = questions.get(randomIndex);
-        System.out.println("Fraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaage      " +String.valueOf(currentQuestion.getQuestion()));
-        System.out.println("Richtige Antwooooooooooooooooooort       "+ String.valueOf(currentQuestion.getCorrectAnswer()));
-        return currentQuestion.getCorrectAnswer();
+        return selectedAnswer.equals(correctAnswer);
     }
 
 
@@ -243,7 +236,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         if (id == R.id.action_settings) {
             Intent i = new Intent(getApplicationContext(),Statistics.class);
             i.putExtra("NumberQuestions", counterOfAnsweredQuestions );
-            i.putExtra("CorrectAnswers", counterOfCorrectlyAnsweredQuestions);
+            i.putExtra("CorrectAnswers", counterOfCorrectAnswers);
             i.putExtra("Subject", subject);
             startActivity(i);
             return true;

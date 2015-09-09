@@ -1,6 +1,7 @@
 package com.example.julia.test;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,7 +18,6 @@ import java.util.ArrayList;
  * Created by Julia on 06.09.2015.
  */
 public class Statistics extends ActionBarActivity{
-    private Ques ques;
     private int numberOfAnsweredQuestions;
     private int numberOfcorrectlyAnsweredQuestions;
     private ImageView correctAnswers;
@@ -25,20 +25,52 @@ public class Statistics extends ActionBarActivity{
     private Display display;
     private TextView subject;
     private TextView percentage;
+    private TextView backToSets;
+    private TextView backToSubjects;
+    private View.OnClickListener cL;
 
     @Override
     protected void onCreate (Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_statistics);
+        setupUIComponents();
+        getStatisticsFromQuiz();
+        setTextView();
+        handleClicks();
+
+    }
+
+    private void setupUIComponents() {
         display = getWindowManager().getDefaultDisplay();
         correctAnswers = (ImageView) findViewById(R.id.progress);
         wrongAnswers = (ImageView) findViewById(R.id.missing);
         subject = (TextView)findViewById(R.id.Subject);
         percentage = (TextView)findViewById(R.id.Percentage);
+        backToSets = (TextView)findViewById(R.id.back_to_sets);
+        backToSubjects = (TextView)findViewById(R.id.back_to_subjects);
+        backToSubjects.setOnClickListener(cL);
+        backToSets.setOnClickListener(cL);
+    }
 
-        getStatisticsFromQuiz();
-        setTextView();
+    private void handleClicks() {
+          cL = new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+
+               if(v.equals(backToSets)){
+
+
+                   //HIER SETS KLASSE VERLINKEN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                   Intent i = new Intent(getApplicationContext(), StartingGameActivity.class);
+                   startActivity(i);
+               }
+               if(v.equals(backToSubjects)){
+                   Intent i = new Intent(getApplicationContext(), StartingGameActivity.class);
+                   startActivity(i);
+               }
+            }
+        };
     }
 
     private void setTextView() {

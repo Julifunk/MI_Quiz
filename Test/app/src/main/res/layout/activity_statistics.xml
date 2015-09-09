@@ -1,61 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Dein Fortschritt"
-        android:id="@+id/activity_header"
-        android:textSize="18pt" />
-
-    <FrameLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Dein Fortschritt"
+            android:id="@+id/activity_header"
+            android:textSize="18pt" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content">
 
-                android:id="@+id/progress"
-                android:background="@drawable/progress_bar_positive"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-            <ImageView
-                android:layout_width="wrap_content"
+                    android:id="@+id/progress"
+                    android:background="@drawable/progress_bar_positive"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/missing"
+
+                    android:background="@drawable/progress_bar_negative"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/missing"
+                android:layout_gravity="center"
+                android:layout_weight ="0.5">
 
-                android:background="@drawable/progress_bar_negative"/>
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Medium Text"
+                    android:id="@+id/Subject" />
 
-        <LinearLayout
-            android:orientation="horizontal"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Medium Text"
+                    android:id="@+id/Percentage" />
+
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5">
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/back_to_subject"
+            android:id="@+id/back_to_subjects"
+            android:textSize="12pt"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_of_buttons_subjects"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/Subject" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/back_to_set"
+            android:id="@+id/back_to_sets"
+            android:textSize="12pt"
+            android:layout_margin="10dp"
+            android:background="@drawable/border_of_buttons_subjects"
+            android:layout_gravity="center"
+            android:gravity="center" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/Percentage" />
-        </LinearLayout>
-    </FrameLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

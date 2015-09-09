@@ -15,7 +15,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_above="@+id/stats"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.5"
+            android:layout_gravity="center" />
 
         <TextView
             android:id="@+id/starting_game"
