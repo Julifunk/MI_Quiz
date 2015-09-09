@@ -16,7 +16,7 @@ public class QuestionsObject {
 
     private static final String KEY_QUESTION = "question";
     private static final String KEY_ANSWER_OPTIONS = "answerOptions";
-    private static final String KEY_CORRECT_ANSWER = "correctAnswer";
+    private static final String KEY_CORRECT_ANSWER = "correctAnwser";
 
     ParseObject parseObject;
 
@@ -28,11 +28,16 @@ public class QuestionsObject {
         this.option_c = answerOptions.get(2);
         this.option_d = answerOptions.get(3);
         this.correct_answer = parseObject.getString(KEY_CORRECT_ANSWER);
+
+
     }
 
     public String getQuestion(){
-        return parseObject.getString(KEY_QUESTION);
+        String question= parseObject.getString(KEY_QUESTION);
+        return question;
     }
+
+
 
 
     public String getOptionA(){

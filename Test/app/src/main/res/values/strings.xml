@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">Test</string>
+    <string name="app_name">MeInQuiz</string>
     <string name="action_settings">Settings</string>
     <string name="eimi">EIMI</string>
-    <string name="choose">Please, choose your subject.. </string>
+    <string name="adp">ADP</string>
+    <string name="hci">HCI</string>
+    <string name="choose">Wähle ein Fach aus: </string>
+    <string name="starting_game">Quiz starten</string>
+    <string name="stats">Statistik</string>
+    <string name="statistics">Statistik</string>
+    <string name="error_no_answerded_questions">Du hast noch keine Fragen beantwortet!</string>
+    <string name="error_no_network_connection">Um die App zu starten ist eine Netzwerkverbindung nötig</string>
 </resources>
