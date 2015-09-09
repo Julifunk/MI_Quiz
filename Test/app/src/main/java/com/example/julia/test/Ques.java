@@ -73,11 +73,11 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                     option_a.setBackground(getDrawable(R.drawable.progress_bar_positive));
                     }
                 else{
-<<<<<<< HEAD
+
                     option_a.setBackground(getDrawable(R.drawable.progress_bar_negative));
-=======
+
                     option_a.setBackground(getDrawable(R.drawable.progress_bar_positive));
->>>>>>> origin/dev
+
                 }
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
