@@ -48,8 +48,8 @@ public class Statistics extends ActionBarActivity{
         percentage = (TextView)findViewById(R.id.Percentage);
         backToSets = (TextView)findViewById(R.id.back_to_sets);
         backToSubjects = (TextView)findViewById(R.id.back_to_subjects);
-        backToSubjects.setOnClickListener(cL);
-        backToSets.setOnClickListener(cL);
+
+
     }
 
     private void handleClicks() {
@@ -59,10 +59,7 @@ public class Statistics extends ActionBarActivity{
             public void onClick(View v) {
 
                if(v.equals(backToSets)){
-
-
-                   //HIER SETS KLASSE VERLINKEN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                   Intent i = new Intent(getApplicationContext(), StartingGameActivity.class);
+                   Intent i = new Intent(getApplicationContext(), SetDifficulty.class);
                    startActivity(i);
                }
                if(v.equals(backToSubjects)){
@@ -71,6 +68,10 @@ public class Statistics extends ActionBarActivity{
                }
             }
         };
+
+        backToSets.setOnClickListener(cL);
+        backToSubjects.setOnClickListener(cL);
+
     }
 
     private void setTextView() {

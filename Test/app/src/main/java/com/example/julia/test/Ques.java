@@ -29,6 +29,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private int counterOfAnsweredQuestions;
     private int counterOfCorrectAnswers;
     private String subject;
+    private String set;
 
     ArrayList<QuestionsObject> questions = new ArrayList<>();
     Random rGen = new Random();
@@ -45,11 +46,11 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         setContentView(R.layout.activity_questions);
         getUIReferences();
         subject = getIntent().getStringExtra("subject");
-        String set = getIntent().getStringExtra("set");
+        set = getIntent().getStringExtra("set");
 
         questionsDataProvider = new QuestionsDataProvider();
         questionsDataProvider.setQuestionsDataProviderListener(this);
-        questionsDataProvider.getQuestionsFromSubject(subject);
+        questionsDataProvider.getQuestionsFromSubjectAndSet(subject, set);
 
     }
 

@@ -44,7 +44,7 @@ public class StartingGameActivity extends ActionBarActivity {
         eimi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),Ques.class);
+                Intent i = new Intent(getApplicationContext(),SetDifficulty.class);
                 i.putExtra("subject", "EIMI");
                 startActivity(i);
             }
@@ -52,7 +52,7 @@ public class StartingGameActivity extends ActionBarActivity {
         adp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),Ques.class);
+                Intent i = new Intent(getApplicationContext(),SetDifficulty.class);
                 i.putExtra("subject", "ADP");
                 startActivity(i);
             }
@@ -60,7 +60,7 @@ public class StartingGameActivity extends ActionBarActivity {
         hci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),Ques.class);
+                Intent i = new Intent(getApplicationContext(),SetDifficulty.class);
                 i.putExtra("subject","HCI");
                 startActivity(i);
             }

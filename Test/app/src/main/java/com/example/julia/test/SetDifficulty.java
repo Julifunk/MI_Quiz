@@ -15,102 +15,59 @@ public class SetDifficulty extends Activity {
     private TextView easy;
     private TextView middle;
     private TextView difficult;
-
-
-
+    private View.OnClickListener cL;
     @Override
     protected void onCreate (Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_choose_difficult);
-        setupLayoutElements();
+        setupUIComponents();
+        handleClicks();
+
+
 
     }
 
-    private void setupLayoutElements(){
+    private void handleClicks() {
 
-        easy = (TextView) findViewById(R.id.easy);
-        middle = (TextView) findViewById(R.id.middle);
-        difficult = (TextView) findViewById(R.id.difficult);
-
-
-        easy.setOnClickListener(new View.OnClickListener() {
+        cL = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Ques.class);
-                if (getIntent().getBooleanExtra("EIMI", true)) {
+                if(v.equals(easy)){
+                    Intent i = new Intent(getApplicationContext(), Ques.class);
                     i.putExtra("set", "leicht");
+                    i.putExtra("subject", getIntent().getStringExtra("subject"));
                     startActivity(i);
                 }
-
-                if (getIntent().getBooleanExtra("ADP", true)) {
-                    i.putExtra("subject", "ADP");
-                    i.putExtra("set", "leicht");
+                if(v.equals(middle)){
+                    Intent i = new Intent(getApplicationContext(), Ques.class);
+                    i.putExtra("set", "mittel");
+                    i.putExtra("subject", getIntent().getStringExtra("subject"));
                     startActivity(i);
                 }
-
-                if (getIntent().getBooleanExtra("HCI", true)) {
-                    i.putExtra("subject", "HCI");
-                    i.putExtra("set", "leicht");
+                if(v.equals(middle)) {
+                    Intent i = new Intent(getApplicationContext(), Ques.class);
+                    i.putExtra("set", "schwer");
+                    i.putExtra("subject", getIntent().getStringExtra("subject"));
                     startActivity(i);
                 }
             }
-        });
+        };
+        easy.setOnClickListener(cL);
+        middle.setOnClickListener(cL);
+        difficult.setOnClickListener(cL);
 
-       middle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Ques.class);
-
-                if (getIntent().getBooleanExtra("EIMI", true)) {
-                    i.putExtra("subject", "EIMI");
-                    i.putExtra("set", "mittel");
-                    startActivity(i);
-                }
-
-                if (getIntent().getBooleanExtra("ADP", true)) {
-                    i.putExtra("subject", "ADP");
-                    i.putExtra("set", "mittel");
-                    startActivity(i);
-                }
-
-                if (getIntent().getBooleanExtra("HCI", true)) {
-                    i.putExtra("subject", "HCI");
-                    i.putExtra("set", "mittel");
-                    startActivity(i);
-
-                }
-            }
-        });
-
-        difficult.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Ques.class);
-
-                if (getIntent().getBooleanExtra("EIMI", true)) {
-                    i.putExtra("subject", "EIMI");
-                    i.putExtra("set", "schwer");
-                    startActivity(i);
-                }
-
-
-                if (getIntent().getBooleanExtra("ADP", true)) {
-                    i.putExtra("subject", "ADP");
-                    i.putExtra("set", "schwer");
-                    startActivity(i);
-                }
-
-                if (getIntent().getBooleanExtra("HCI", true)) {
-                    i.putExtra("subject", "HCI");
-                    i.putExtra("set", "schwer");
-                    startActivity(i);
-                }}
-        });
 
     }
 
+    private void setupUIComponents() {
+        easy = (TextView)findViewById(R.id.easy);
+
+        middle = (TextView)findViewById(R.id.middle);
+
+        difficult = (TextView)findViewById(R.id.difficult);
 
 
+    }
 
 
 }
