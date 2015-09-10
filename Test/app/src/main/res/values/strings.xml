@@ -12,4 +12,5 @@
     <string name="error_no_network_connection">Um die App zu starten ist eine Netzwerkverbindung nötig</string>
     <string name="back_to_subject">Zurück zur Fachauswahl</string>
     <string name="back_to_set">Zurück zur Schwierigkeits-Auswahl</string>
+    <string name="choose_difficult">Wähle die Schwierigkeit aus:</string>
     </resources>
