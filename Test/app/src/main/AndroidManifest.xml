@@ -30,6 +30,11 @@
             android:configChanges="orientation|screenSize">
         </activity>
         <activity
+            android:name=".SetDifficulty"
+            android:label= "Quiz"
+            android:configChanges="orientation|screenSize">
+        </activity>
+        <activity
             android:name=".Ques"
             android:label= "Quiz"
             android:configChanges="orientation|screenSize">
