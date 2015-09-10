@@ -26,7 +26,7 @@ public class Statistics extends ActionBarActivity{
     private TextView subject;
     private TextView percentage;
     private TextView backToSets;
-    private TextView backToSubjects;
+
     private View.OnClickListener cL;
 
     @Override
@@ -47,11 +47,13 @@ public class Statistics extends ActionBarActivity{
         subject = (TextView)findViewById(R.id.Subject);
         percentage = (TextView)findViewById(R.id.Percentage);
         backToSets = (TextView)findViewById(R.id.back_to_sets);
-        backToSubjects = (TextView)findViewById(R.id.back_to_subjects);
+
 
 
     }
 
+    //setting clickable Layout-Items on Clicklistener
+    //handling Clicks
     private void handleClicks() {
           cL = new View.OnClickListener() {
 
@@ -62,18 +64,16 @@ public class Statistics extends ActionBarActivity{
                    Intent i = new Intent(getApplicationContext(), SetDifficulty.class);
                    startActivity(i);
                }
-               if(v.equals(backToSubjects)){
-                   Intent i = new Intent(getApplicationContext(), StartingGameActivity.class);
-                   startActivity(i);
-               }
+
             }
         };
 
         backToSets.setOnClickListener(cL);
-        backToSubjects.setOnClickListener(cL);
+
 
     }
 
+    //setting up the rating-bar and the percentage
     private void setTextView() {
         subject.setText(getIntent().getStringExtra("Subject")+ ": ");
         if(numberOfAnsweredQuestions != 0) {
@@ -86,18 +86,17 @@ public class Statistics extends ActionBarActivity{
 
     }
 
+
     private void getStatisticsFromQuiz() {
        numberOfcorrectlyAnsweredQuestions = getIntent().getIntExtra("CorrectAnswers", 0);
-        System.out.println("Anzahl richtig beantwortete Fragen: " + numberOfcorrectlyAnsweredQuestions);
        numberOfAnsweredQuestions = getIntent().getIntExtra("NumberQuestions", 0);
-        System.out.println("Anzahl Fragen:  " + numberOfAnsweredQuestions);
-        correctAnswers.requestLayout();
-        wrongAnswers.requestLayout();
-        if(numberOfAnsweredQuestions != 0) {
-            correctAnswers.getLayoutParams().width = Integer.valueOf(display.getWidth() * numberOfcorrectlyAnsweredQuestions / numberOfAnsweredQuestions);
-        }
-        else{
-            percentage.setText(R.string.error_no_answerded_questions);
-        }
+       correctAnswers.requestLayout();
+       wrongAnswers.requestLayout();
+       if(numberOfAnsweredQuestions != 0) {
+           correctAnswers.getLayoutParams().width = (display.getWidth() * numberOfcorrectlyAnsweredQuestions / numberOfAnsweredQuestions);
+       }
+       else{
+           percentage.setText(R.string.error_no_answerded_questions);
+       }
     }
 }
