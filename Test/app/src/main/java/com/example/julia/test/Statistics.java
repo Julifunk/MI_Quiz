@@ -26,6 +26,7 @@ public class Statistics extends ActionBarActivity{
     private TextView subject;
     private TextView percentage;
     private TextView backToSets;
+    private TextView backToSubjects;
 
     private View.OnClickListener cL;
 
@@ -47,6 +48,7 @@ public class Statistics extends ActionBarActivity{
         subject = (TextView)findViewById(R.id.Subject);
         percentage = (TextView)findViewById(R.id.Percentage);
         backToSets = (TextView)findViewById(R.id.back_to_sets);
+        backToSubjects = (TextView)findViewById(R.id.back_to_subjects);
 
 
 
@@ -64,11 +66,17 @@ public class Statistics extends ActionBarActivity{
                    Intent i = new Intent(getApplicationContext(), SetDifficulty.class);
                    startActivity(i);
                }
+                if(v.equals(backToSubjects)){
+                    Intent i = new Intent(getApplicationContext(), StartingGameActivity.class);
+                    startActivity(i);
+                }
+
 
             }
         };
 
         backToSets.setOnClickListener(cL);
+        backToSubjects.setOnClickListener(cL);
 
 
     }

@@ -8,6 +8,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/na_logo"
+        android:name="com.example.julia.test.ParseApplication"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         android:configChanges="orientation|screenSize"

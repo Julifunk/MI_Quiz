@@ -23,17 +23,10 @@ public class StartingGameActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting_a_game);
-        connectWithParse();
         setupLayoutElements();
        }
 
 
-
-    //sets up the connection to parse.com
-    private void connectWithParse() {
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(this, "BUfWzIhsninLF29zGCoEz7puv93amubRhTUmfY63", "L36y1hNcNkMI5qVmz8ytD8DsrqnSwrYzmi9gmCYM");
-    }
 
     private void setupLayoutElements(){
 
