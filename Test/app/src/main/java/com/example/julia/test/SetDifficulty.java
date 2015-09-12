@@ -44,7 +44,7 @@ public class SetDifficulty extends Activity {
                     i.putExtra("subject", getIntent().getStringExtra("subject"));
                     startActivity(i);
                 }
-                if(v.equals(middle)) {
+                if(v.equals(difficult)){
                     Intent i = new Intent(getApplicationContext(), Ques.class);
                     i.putExtra("set", "schwer");
                     i.putExtra("subject", getIntent().getStringExtra("subject"));
