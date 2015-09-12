@@ -22,9 +22,6 @@ public class SetDifficulty extends Activity {
         setContentView(R.layout.activity_choose_difficult);
         setupUIComponents();
         handleClicks();
-
-
-
     }
 
     private void handleClicks() {
@@ -61,12 +58,8 @@ public class SetDifficulty extends Activity {
 
     private void setupUIComponents() {
         easy = (TextView)findViewById(R.id.easy);
-
         middle = (TextView)findViewById(R.id.middle);
-
         difficult = (TextView)findViewById(R.id.difficult);
-
-
     }
 
 
