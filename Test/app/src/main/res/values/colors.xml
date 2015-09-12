@@ -8,9 +8,23 @@
     <color name="Blue">#ff47d6ff</color>
     <color name="Black">#ff141414</color>
     <color name="Yellow">#ffffff91</color>
-    <color name="Heidenelkenrot">#9C004B</color>
+    <color name="HeidenelkenrotOriginal">#9C004B</color>
     <color name="border_color_question">#005216</color>
     <color name="border_color">#ff141414</color>
     <color name="background_question">#E6F142</color>
+    <color name ="HeidenelkenrotMittelhell">#C20A61</color>
+    <color name ="HeidenelkenrotHell">#CC387E</color>
+    <color name = "HeidenelkenrotMitteldunkel">#7F003C</color>
+    <color name = "HeidenelkenrotDunkel">#5B002B</color>
+    <color name = "GrünOriginal">#008C25</color>
+    <color name = "GrünHeller">#09AE34</color>
+    <color name = "GrünHell">#32B755</color>
+    <color name = "GrünDunkler">#00721E</color>
+    <color name = "GrünDunkel">#005216</color>
+    <color name = "GelbOriginal">#AEB900</color>
+    <color name = "GelbHeller">#D9E60C</color>
+    <color name = "GelbHell">#E6F142</color>
+    <color name = "GelbDunkler">#8D9600</color>
+    <color name = "GelbDunkel">#656C00</color>
 
 </resources>
