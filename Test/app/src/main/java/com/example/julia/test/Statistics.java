@@ -57,7 +57,7 @@ public class Statistics extends ActionBarActivity{
 
                if(v.equals(backToSets)){
                    Intent i = new Intent(getApplicationContext(), SetDifficulty.class);
-                   i.putExtra("subject", subject.getText());
+                   i.putExtra("subject", getIntent().getStringExtra("subject"));
                    startActivity(i);
                }
                 if(v.equals(backToSubjects)){
@@ -77,7 +77,7 @@ public class Statistics extends ActionBarActivity{
 
     //setting up the rating-bar and the percentage
     private void setTextView() {
-        subject.setText(getIntent().getStringExtra("Subject")+ ": ");
+        subject.setText(getIntent().getStringExtra("subject")+ ": ");
         if(numberOfAnsweredQuestions != 0) {
             percentage.setText(" " + numberOfcorrectlyAnsweredQuestions * 100 / numberOfAnsweredQuestions + "%");
         }
@@ -90,8 +90,8 @@ public class Statistics extends ActionBarActivity{
 
 
     private void getStatisticsFromQuiz() {
-       numberOfcorrectlyAnsweredQuestions = getIntent().getIntExtra("CorrectAnswers", 0);
-       numberOfAnsweredQuestions = getIntent().getIntExtra("NumberQuestions", 0);
+       numberOfcorrectlyAnsweredQuestions = getIntent().getIntExtra("correctAnswers", 0);
+       numberOfAnsweredQuestions = getIntent().getIntExtra("numberQuestions", 0);
        correctAnswers.requestLayout();
        wrongAnswers.requestLayout();
        if(numberOfAnsweredQuestions != 0) {

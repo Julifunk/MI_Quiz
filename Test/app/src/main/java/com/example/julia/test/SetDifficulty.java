@@ -16,12 +16,14 @@ public class SetDifficulty extends Activity {
     private TextView middle;
     private TextView difficult;
     private View.OnClickListener cL;
+
     @Override
     protected void onCreate (Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_choose_difficult);
         setupUIComponents();
         handleClicks();
+
     }
 
     private void handleClicks() {

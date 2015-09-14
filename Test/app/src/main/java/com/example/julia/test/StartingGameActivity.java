@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.parse.Parse;
 import com.parse.ParseObject;
 
 public class StartingGameActivity extends ActionBarActivity {
