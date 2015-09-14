@@ -24,7 +24,9 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+
+                >
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -53,6 +55,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Medium Text"
+                    android:layout_gravity="center"
                     android:id="@+id/Subject" />
 
                 <TextView
@@ -60,6 +63,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Medium Text"
+                    android:layout_gravity="center"
                     android:id="@+id/Percentage" />
 
             </LinearLayout>
@@ -87,7 +91,7 @@
             android:gravity="center" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/back_to_subject"
