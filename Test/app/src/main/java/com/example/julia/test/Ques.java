@@ -12,8 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -174,9 +172,9 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private void setTextFieldWithQuestionAtIndex() {
         if (questions.size() < 1) {
             Intent i = new Intent(getApplicationContext(), Statistics.class);
-            i.putExtra("NumberQuestions", counterOfAnsweredQuestions );
-            i.putExtra("CorrectAnswers", counterOfCorrectAnswers);
-            i.putExtra("Subject", subject);
+            i.putExtra("numberQuestions", counterOfAnsweredQuestions );
+            i.putExtra("correctAnswers", counterOfCorrectAnswers);
+            i.putExtra("subject", subject);
             startActivity(i);
             return;
         }
@@ -239,9 +237,9 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent i = new Intent(getApplicationContext(),Statistics.class);
-            i.putExtra("NumberQuestions", counterOfAnsweredQuestions );
-            i.putExtra("CorrectAnswers", counterOfCorrectAnswers);
-            i.putExtra("Subject", subject);
+            i.putExtra("numberQuestions", counterOfAnsweredQuestions );
+            i.putExtra("correctAnswers", counterOfCorrectAnswers);
+            i.putExtra("subject", subject);
             startActivity(i);
             return true;
         }
