@@ -1,19 +1,12 @@
 package com.example.julia.test;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.media.Image;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 /**
  * Created by Julia on 06.09.2015.
  */
@@ -64,6 +57,7 @@ public class Statistics extends ActionBarActivity{
 
                if(v.equals(backToSets)){
                    Intent i = new Intent(getApplicationContext(), SetDifficulty.class);
+                   i.putExtra("subject", subject.getText());
                    startActivity(i);
                }
                 if(v.equals(backToSubjects)){
