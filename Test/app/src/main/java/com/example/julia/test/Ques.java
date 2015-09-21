@@ -73,17 +73,17 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private void handleUserInput() {
 
         cL = new View.OnClickListener() {
-            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+
             @Override
             public void onClick(View v) {
                 if (v.equals(option_a)) {
                     if (isCorrectAnswer(option_a.getText().toString())) {
 
                         counterOfCorrectAnswers++;
-                        option_a.setBackground(getDrawable(R.drawable.progress_bar_positive));
+                        option_a.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
                     } else {
 
-                        option_a.setBackground(getDrawable(R.drawable.progress_bar_negative));
+                        option_a.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
                     }
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -101,10 +101,10 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                     if (isCorrectAnswer(option_b.getText().toString())) {
 
                         counterOfCorrectAnswers++;
-                        option_b.setBackground(getDrawable(R.drawable.progress_bar_positive));
-                    }
-                    else{
-                        option_b.setBackground(getDrawable(R.drawable.progress_bar_negative));
+                        option_b.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
+                    } else {
+
+                        option_b.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
                     }
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -121,10 +121,10 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                     if (isCorrectAnswer(option_c.getText().toString())) {
 
                         counterOfCorrectAnswers++;
-                        option_c.setBackground(getDrawable(R.drawable.progress_bar_positive));
-                    }
-                    else{
-                        option_c.setBackground(getDrawable(R.drawable.progress_bar_negative));
+                        option_c.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
+                    } else {
+
+                        option_c.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
                     }
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -139,12 +139,11 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                 }
                 if (v.equals(option_d)) {
                     if (isCorrectAnswer(option_d.getText().toString())) {
-
                         counterOfCorrectAnswers++;
-                        option_d.setBackground(getDrawable(R.drawable.progress_bar_positive));
-                    }
-                    else{
-                        option_d.setBackground(getDrawable(R.drawable.progress_bar_negative));
+                        option_d.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
+                    } else {
+
+                        option_d.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
                     }
                 }
                 final Handler handler = new Handler();
