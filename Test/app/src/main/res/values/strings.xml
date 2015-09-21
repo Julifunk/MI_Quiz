@@ -4,6 +4,8 @@
     <string name="eimi">EIMI</string>
     <string name="adp">ADP</string>
     <string name="hci">HCI</string>
+    <string name="mmt">MMT</string>
+    <string name="mmdb">MMDB</string>
     <string name="choose">Wähle ein Fach aus: </string>
     <string name="starting_game">Quiz starten</string>
     <string name="stats">Statistik</string>
@@ -13,4 +15,5 @@
     <string name="back_to_subject">Zurück zur Fachauswahl </string>
     <string name="back_to_set">Zurück zur Schwierigkeits-Auswahl </string>
     <string name="choose_difficult">Wähle die Schwierigkeit aus:</string>
+
     </resources>

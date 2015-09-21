@@ -15,6 +15,8 @@ public class StartingGameActivity extends ActionBarActivity {
     private TextView eimi;
     private TextView adp;
     private TextView hci;
+    private TextView mmt;
+    private TextView mmdb;
   
     ParseObject object;
 
@@ -32,6 +34,8 @@ public class StartingGameActivity extends ActionBarActivity {
         eimi = (TextView) findViewById (R.id.eimi);
         adp = (TextView) findViewById(R.id.adp);
         hci = (TextView) findViewById(R.id.hci);
+        mmt = (TextView) findViewById(R.id.mmt);
+        mmdb = (TextView) findViewById(R.id.mmdb);
 
         eimi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +58,22 @@ public class StartingGameActivity extends ActionBarActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),SetDifficulty.class);
                 i.putExtra("subject","HCI");
+                startActivity(i);
+            }
+        });
+        mmt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),SetDifficulty.class);
+                i.putExtra("subject","MMT");
+                startActivity(i);
+            }
+        });
+        mmdb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),SetDifficulty.class);
+                i.putExtra("subject","MMDB");
                 startActivity(i);
             }
         });
