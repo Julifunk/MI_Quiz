@@ -53,7 +53,7 @@ public class QuestionsDataProvider {
     }
 
     private ArrayList<QuestionsObject> parseQuestionsAsArrayList(List<ParseObject> parseQuestions) {
-        ArrayList<QuestionsObject> questions = new ArrayList<>();
+        ArrayList<QuestionsObject> questions = new ArrayList<QuestionsObject>();
 
         for (ParseObject object : parseQuestions) {
             questions.add(new QuestionsObject(object));
