@@ -10,7 +10,7 @@
         android:icon="@mipmap/na_logo"
         android:name="com.example.julia.test.ParseApplication"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
+        android:theme="@style/CustomActionBarTheme"
         android:configChanges="orientation|screenSize"
         >
         <activity
