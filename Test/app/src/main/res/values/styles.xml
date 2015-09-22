@@ -22,10 +22,10 @@
     <!-- ActionBar styles -->
     <style name="MyActionBar"
         parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/GelbHell</item>
+        <item name="android:background">@color/GrünHell</item>
 
         <!-- Support library compatibility -->
-        <item name="background">@color/GelbHell</item>
+        <item name="background">@color/GrünHell</item>
     </style>
 
 
