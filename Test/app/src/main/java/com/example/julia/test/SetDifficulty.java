@@ -4,13 +4,13 @@ package com.example.julia.test;
  * Created by Marcus on 10.09.2015.
  */
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.TextView;
 
-public class SetDifficulty extends Activity {
+public class SetDifficulty extends ActionBarActivity {
 
     private TextView easy;
     private TextView middle;
