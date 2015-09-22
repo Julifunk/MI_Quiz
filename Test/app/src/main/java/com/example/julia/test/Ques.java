@@ -34,7 +34,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private String set;
     private View.OnClickListener cL;
 
-    ArrayList<QuestionsObject> questions = new ArrayList<>();
+    ArrayList<QuestionsObject> questions = new ArrayList<QuestionsObject>();
     Random rGen = new Random();
     int currentQuestion = 1;
     int randomIndex = 1;
@@ -70,44 +70,80 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         option_d = (TextView) findViewById(R.id.option_d);
     }
 
+<<<<<<< HEAD
    //will detect which answer User has clicked and if it is right or wrong
+=======
+    //will detect whick answer User has clicked and if it if right or wrong
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
     private void handleUserInput() {
         cL = new View.OnClickListener() {
+<<<<<<< HEAD
+=======
+            @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
             @Override
             public void onClick(View v) {
                 if (v.equals(option_a)) {
                     if (isCorrectAnswer(option_a.getText().toString())) {
                         counterOfCorrectAnswers++;
+<<<<<<< HEAD
                         option_a.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
                     } else {
                         option_a.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
+=======
+                        option_a.setBackgroundColor(getResources().getColor(R.color.GrünDunkel));
+                    } else {
+
+                        option_a.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMitteldunkel));
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
                     }
                 }
 
                 if (v.equals(option_b)) {
                     if (isCorrectAnswer(option_b.getText().toString())) {
                         counterOfCorrectAnswers++;
+<<<<<<< HEAD
                         option_b.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
                     } else {
                         option_b.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
+=======
+                        option_b.setBackgroundColor(getResources().getColor(R.color.GrünDunkel));
+                    } else {
+
+                        option_b.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMitteldunkel));
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
                     }
 
                 }
                 if (v.equals(option_c)) {
                     if (isCorrectAnswer(option_c.getText().toString())) {
                         counterOfCorrectAnswers++;
+<<<<<<< HEAD
                         option_c.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
                     } else {
 
                         option_c.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
+=======
+                        option_c.setBackgroundColor(getResources().getColor(R.color.GrünDunkel));
+                    } else {
+
+                        option_c.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMitteldunkel));
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
                     }
                 }
                 if (v.equals(option_d)) {
                     if (isCorrectAnswer(option_d.getText().toString())) {
                         counterOfCorrectAnswers++;
+<<<<<<< HEAD
                         option_d.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
                     } else {
                         option_d.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
+=======
+                        option_d.setBackgroundColor(getResources().getColor(R.color.GrünDunkel));
+                    } else {
+
+                        option_d.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMitteldunkel));
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
                     }
                 }
                 showCorrectAnswer();
@@ -172,6 +208,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             i.putExtra("numberQuestions", counterOfAnsweredQuestions );
             i.putExtra("correctAnswers", counterOfCorrectAnswers);
             i.putExtra("subject", subject);
+            i.putExtra("set", set);
             startActivity(i);
             return;
         }
@@ -182,7 +219,14 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         QuestionsObject currentQuestion = this.questions.get(randomIndex);
         displayQuestion(currentQuestion);
         questions.remove(randomIndex);
+<<<<<<< HEAD
        }
+=======
+
+
+
+    }
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
 
     //displays the current question
     private void displayQuestion(QuestionsObject currentQuestion) {
@@ -231,6 +275,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             i.putExtra("numberQuestions", counterOfAnsweredQuestions );
             i.putExtra("correctAnswers", counterOfCorrectAnswers);
             i.putExtra("subject", subject);
+            i.putExtra("set", set);
             startActivity(i);
             return true;
         }
