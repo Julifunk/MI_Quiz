@@ -3,6 +3,8 @@ package com.example.julia.test;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -48,7 +50,6 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         getUIReferences();
         subject = getIntent().getStringExtra("subject");
         set = getIntent().getStringExtra("set");
-
         setupDataProvider();
         handleUserInput();
 
@@ -69,94 +70,96 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         option_d = (TextView) findViewById(R.id.option_d);
     }
 
+<<<<<<< HEAD
+   //will detect which answer User has clicked and if it is right or wrong
+=======
     //will detect whick answer User has clicked and if it if right or wrong
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
     private void handleUserInput() {
-
         cL = new View.OnClickListener() {
+<<<<<<< HEAD
+=======
             @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
             @Override
             public void onClick(View v) {
                 if (v.equals(option_a)) {
                     if (isCorrectAnswer(option_a.getText().toString())) {
-
                         counterOfCorrectAnswers++;
+<<<<<<< HEAD
+                        option_a.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
+                    } else {
+                        option_a.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
+=======
                         option_a.setBackgroundColor(getResources().getColor(R.color.GrünDunkel));
                     } else {
 
                         option_a.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMitteldunkel));
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
                     }
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            option_a.setBackgroundColor(Color.WHITE);
-                            currentQuestion++;
-                            setTextFieldWithQuestionAtIndex();
-                            counterOfAnsweredQuestions++;
-                        }
-                    }, 500);
                 }
+
                 if (v.equals(option_b)) {
                     if (isCorrectAnswer(option_b.getText().toString())) {
-
                         counterOfCorrectAnswers++;
+<<<<<<< HEAD
+                        option_b.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
+                    } else {
+                        option_b.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
+=======
                         option_b.setBackgroundColor(getResources().getColor(R.color.GrünDunkel));
                     } else {
 
                         option_b.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMitteldunkel));
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
                     }
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            option_b.setBackgroundColor(Color.WHITE);
-                            currentQuestion++;
-                            setTextFieldWithQuestionAtIndex();
-                            counterOfAnsweredQuestions++;
-                        }
-                    }, 500);
+
                 }
                 if (v.equals(option_c)) {
                     if (isCorrectAnswer(option_c.getText().toString())) {
-
                         counterOfCorrectAnswers++;
+<<<<<<< HEAD
+                        option_c.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
+                    } else {
+
+                        option_c.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
+=======
                         option_c.setBackgroundColor(getResources().getColor(R.color.GrünDunkel));
                     } else {
 
                         option_c.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMitteldunkel));
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
                     }
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            option_c.setBackgroundColor(Color.WHITE);
-                            currentQuestion++;
-                            setTextFieldWithQuestionAtIndex();
-                            counterOfAnsweredQuestions++;
-                        }
-                    }, 500);
                 }
                 if (v.equals(option_d)) {
                     if (isCorrectAnswer(option_d.getText().toString())) {
-
                         counterOfCorrectAnswers++;
+<<<<<<< HEAD
+                        option_d.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
+                    } else {
+                        option_d.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
+=======
                         option_d.setBackgroundColor(getResources().getColor(R.color.GrünDunkel));
                     } else {
 
                         option_d.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMitteldunkel));
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
                     }
                 }
+                showCorrectAnswer();
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        option_d.setBackgroundColor(Color.WHITE);
-                        currentQuestion++;
-                        setTextFieldWithQuestionAtIndex();
-                        counterOfAnsweredQuestions++;
+                       option_a.setBackgroundColor(Color.WHITE);
+                       option_b.setBackgroundColor(Color.WHITE);
+                       option_c.setBackgroundColor(Color.WHITE);
+                       option_d.setBackgroundColor(Color.WHITE);
+                       currentQuestion++;
+                       setTextFieldWithQuestionAtIndex();
+                       counterOfAnsweredQuestions++;
                     }
-                }, 500);
+                }, 800);
             }
         };
         option_a.setOnClickListener(cL);
@@ -166,6 +169,36 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
     }
 
+    private void showCorrectAnswer() {
+        int delay = 300;
+        ColorDrawable f = new ColorDrawable(getResources().getColor(R.color.GrünHell));
+        ColorDrawable f2 = new ColorDrawable(getResources().getColor(R.color.GrünDunkler));
+              AnimationDrawable a = new AnimationDrawable();
+        a.addFrame(f, delay);
+        a.addFrame(f2, delay);
+        a.setOneShot(false);
+
+
+
+        if(isCorrectAnswer(option_a.getText().toString())){
+            option_a.setBackgroundDrawable(a); // This method is deprecated in API 16
+            // fondo.setBackground(a); // Use this method if you're using API 16
+            a.start();
+
+        }
+
+        else if(isCorrectAnswer(option_b.getText().toString())){
+            option_b.setBackgroundDrawable(a);
+
+        }
+        else if(isCorrectAnswer(option_c.getText().toString())){
+            option_c.setBackgroundDrawable(a);
+        }
+
+        else if(isCorrectAnswer(option_d.getText().toString())){
+            option_d.setBackgroundDrawable(a);
+        }
+    }
 
 
     //gets a random Question from ArrayList<QuestionsObject> and removes it after usage
@@ -179,19 +212,21 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             startActivity(i);
             return;
         }
-
         rGen = new Random();
         if(this.questions.size()>0) {
             randomIndex = rGen.nextInt(this.questions.size());
         }
-
         QuestionsObject currentQuestion = this.questions.get(randomIndex);
         displayQuestion(currentQuestion);
         questions.remove(randomIndex);
+<<<<<<< HEAD
+       }
+=======
 
 
 
     }
+>>>>>>> 63830a7fb3b60ef386dc499abd09f5159a4db891
 
     //displays the current question
     private void displayQuestion(QuestionsObject currentQuestion) {
@@ -215,10 +250,9 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     public void onQuestionsDownloaded(ArrayList<QuestionsObject> questions) {
         this.questions = questions;
         System.out.println(this.questions.size());
+
         setTextFieldWithQuestionAtIndex();
     }
-
-
 
 
     @Override
