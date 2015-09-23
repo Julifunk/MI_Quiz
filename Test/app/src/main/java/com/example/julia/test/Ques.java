@@ -27,7 +27,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private TextView option_b;
     private TextView option_c;
     private TextView option_d;
-    private String  correctAnswer;
+    private String correctAnswer;
     private int counterOfAnsweredQuestions;
     private int counterOfCorrectAnswers;
     private String subject;
@@ -44,7 +44,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
 
     @Override
-    protected void onCreate (Bundle saveInstanceState) {
+    protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_questions);
         getUIReferences();
@@ -84,174 +84,160 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                         option_a.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
                     } else {
                         option_a.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
-
-                        option_a.setBackgroundColor(getResources().getColor(R.color.GrünDunkel));
                     }
                 }
 
                 if (v.equals(option_b)) {
                     if (isCorrectAnswer(option_b.getText().toString())) {
                         counterOfCorrectAnswers++;
-
                         option_b.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
                     } else {
-                        option_b.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
-
-                        option_b.setBackgroundColor(getResources().getColor(R.color.GrünDunkel));
+                       option_b.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
                     }
                 }
                 if (v.equals(option_c)) {
-                    if (isCorrectAnswer(option_c.getText().toString())) {
-                        counterOfCorrectAnswers++;
-
-                        option_c.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
-                    } else {
-
-                        option_c.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
-
-                        option_c.setBackgroundColor(getResources().getColor(R.color.GrünDunkel));
-                    }
+                   if (isCorrectAnswer(option_c.getText().toString())) {
+                       counterOfCorrectAnswers++;
+                       option_c.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
+                        } else {
+                   option_c.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
+                   }
                 }
                 if (v.equals(option_d)) {
-                    if (isCorrectAnswer(option_d.getText().toString())) {
+                   if (isCorrectAnswer(option_d.getText().toString())) {
                         counterOfCorrectAnswers++;
                         option_d.setBackgroundColor(getResources().getColor(R.color.GrünDunkler));
-                    } else {
-                        option_d.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
-                        option_d.setBackgroundColor(getResources().getColor(R.color.GrünDunkel));
-                    }
+                   } else {
+                       option_d.setBackgroundColor(getResources().getColor(R.color.HeidenelkenrotMittelhell));
+                   }
                 }
-                showCorrectAnswer();
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                       option_a.setBackgroundColor(Color.WHITE);
-                       option_b.setBackgroundColor(Color.WHITE);
-                       option_c.setBackgroundColor(Color.WHITE);
-                       option_d.setBackgroundColor(Color.WHITE);
-                       currentQuestion++;
-                       setTextFieldWithQuestionAtIndex();
-                       counterOfAnsweredQuestions++;
-                    }
-                }, 800);
+
+
+                    showCorrectAnswer();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            option_a.setBackgroundColor(Color.WHITE);
+                            option_b.setBackgroundColor(Color.WHITE);
+                            option_c.setBackgroundColor(Color.WHITE);
+                            option_d.setBackgroundColor(Color.WHITE);
+                            currentQuestion++;
+                            setTextFieldWithQuestionAtIndex();
+                            counterOfAnsweredQuestions++;
+                        }
+                    }, 1000);
+
+
+
+
+            };
+        };}
+
+            private void showCorrectAnswer() {
+                int delay = 300;
+                ColorDrawable frame1 = new ColorDrawable(getResources().getColor(R.color.GrünHell));
+                ColorDrawable frame2 = new ColorDrawable(getResources().getColor(R.color.GrünDunkler));
+                AnimationDrawable a = new AnimationDrawable();
+                a.addFrame(frame1, delay);
+                a.addFrame(frame2, delay);
+                a.setOneShot(true);
+
+                if (isCorrectAnswer(option_a.getText().toString())) {
+                    option_a.setBackgroundDrawable(a);
+                    a.start();
+                } else if (isCorrectAnswer(option_b.getText().toString())) {
+                    option_b.setBackgroundDrawable(a);
+                    a.start();
+                } else if (isCorrectAnswer(option_c.getText().toString())) {
+                    option_c.setBackgroundDrawable(a);
+                    a.start();
+                } else if (isCorrectAnswer(option_d.getText().toString())) {
+                    option_d.setBackgroundDrawable(a);
+                    a.start();
+                }
             }
-        };
-        option_a.setOnClickListener(cL);
-        option_b.setOnClickListener(cL);
-        option_c.setOnClickListener(cL);
-        option_d.setOnClickListener(cL);
-
-    }
-
-    private void showCorrectAnswer() {
-        int delay = 300;
-        ColorDrawable f = new ColorDrawable(getResources().getColor(R.color.GrünHell));
-        ColorDrawable f2 = new ColorDrawable(getResources().getColor(R.color.GrünDunkler));
-              AnimationDrawable a = new AnimationDrawable();
-        a.addFrame(f, delay);
-        a.addFrame(f2, delay);
-        a.setOneShot(false);
 
 
+            //gets a random Question from ArrayList<QuestionsObject> and removes it after usage
+            private void setTextFieldWithQuestionAtIndex() {
+                if (questions.size() < 1) {
+                    Intent i = new Intent(getApplicationContext(), Statistics.class);
+                    i.putExtra("numberQuestions", counterOfAnsweredQuestions);
+                    i.putExtra("correctAnswers", counterOfCorrectAnswers);
+                    i.putExtra("subject", subject);
+                    i.putExtra("set", set);
+                    startActivity(i);
+                    return;
+                }
+                rGen = new Random();
+                if (questions.size() > 0) {
+                    randomIndex = rGen.nextInt(questions.size());
+                }
+                QuestionsObject currentQuestion = questions.get(randomIndex);
+                displayQuestion(currentQuestion);
+                questions.remove(randomIndex);
+            }
 
-        if(isCorrectAnswer(option_a.getText().toString())){
-            option_a.setBackgroundDrawable(a); // This method is deprecated in API 16
-            // fondo.setBackground(a); // Use this method if you're using API 16
-            a.start();
 
+            //displays the current question
+            private void displayQuestion(QuestionsObject currentQuestion) {
+                question.setText(currentQuestion.getQuestion());
+                option_a.setText(currentQuestion.getOptionA());
+                option_b.setText(currentQuestion.getOptionB());
+                option_c.setText(currentQuestion.getOptionC());
+                option_d.setText(currentQuestion.getOptionD());
+                correctAnswer = currentQuestion.getCorrectAnswer();
+
+            }
+
+
+            private boolean isCorrectAnswer(String selectedAnswer) {
+                return selectedAnswer.equals(correctAnswer);
+            }
+
+
+            // Interface Methods
+            @Override
+            public void onQuestionsDownloaded(ArrayList<QuestionsObject> questions) {
+                this.questions = questions;
+                System.out.println(questions.size());
+
+
+                setTextFieldWithQuestionAtIndex();
+                option_a.setOnClickListener(cL);
+                option_b.setOnClickListener(cL);
+                option_c.setOnClickListener(cL);
+                option_d.setOnClickListener(cL);
+            }
+
+
+            @Override
+            public boolean onCreateOptionsMenu(Menu menu) {
+                // Inflate the menu; this adds items to the action bar if it is present.
+                getMenuInflater().inflate(R.menu.menu_main, menu);
+                return true;
+            }
+
+            @Override
+            public boolean onOptionsItemSelected(MenuItem item) {
+                // Handle action bar item clicks here. The action bar will
+                // automatically handle clicks on the Home/Up button, so long
+                // as you specify a parent activity in AndroidManifest.xml.
+                int id = item.getItemId();
+
+                //noinspection SimplifiableIfStatement
+                if (id == R.id.action_settings) {
+                    Intent i = new Intent(getApplicationContext(), Statistics.class);
+                    i.putExtra("numberQuestions", counterOfAnsweredQuestions);
+                    i.putExtra("correctAnswers", counterOfCorrectAnswers);
+                    i.putExtra("subject", subject);
+                    i.putExtra("set", set);
+                    startActivity(i);
+                    return true;
+                }
+
+                return super.onOptionsItemSelected(item);
+            }
         }
 
-        else if(isCorrectAnswer(option_b.getText().toString())){
-            option_b.setBackgroundDrawable(a);
-
-        }
-        else if(isCorrectAnswer(option_c.getText().toString())){
-            option_c.setBackgroundDrawable(a);
-        }
-
-        else if(isCorrectAnswer(option_d.getText().toString())){
-            option_d.setBackgroundDrawable(a);
-        }
-    }
-
-
-    //gets a random Question from ArrayList<QuestionsObject> and removes it after usage
-    private void setTextFieldWithQuestionAtIndex() {
-        if (questions.size() < 1) {
-            Intent i = new Intent(getApplicationContext(), Statistics.class);
-            i.putExtra("numberQuestions", counterOfAnsweredQuestions );
-            i.putExtra("correctAnswers", counterOfCorrectAnswers);
-            i.putExtra("subject", subject);
-            i.putExtra("set", set);
-            startActivity(i);
-            return;
-        }
-        rGen = new Random();
-        if(this.questions.size()>0) {
-            randomIndex = rGen.nextInt(this.questions.size());
-        }
-        QuestionsObject currentQuestion = this.questions.get(randomIndex);
-        displayQuestion(currentQuestion);
-        questions.remove(randomIndex);
-       }
-
-
-
-
-
-    //displays the current question
-    private void displayQuestion(QuestionsObject currentQuestion) {
-        question.setText(currentQuestion.getQuestion());
-        option_a.setText(currentQuestion.getOptionA());
-        option_b.setText(currentQuestion.getOptionB());
-        option_c.setText(currentQuestion.getOptionC());
-        option_d.setText(currentQuestion.getOptionD());
-        correctAnswer = currentQuestion.getCorrectAnswer();
-
-    }
-
-
-    private boolean isCorrectAnswer(String selectedAnswer) {
-        return selectedAnswer.equals(correctAnswer);
-    }
-
-
-    // Interface Methods
-    @Override
-    public void onQuestionsDownloaded(ArrayList<QuestionsObject> questions) {
-        this.questions = questions;
-        System.out.println(this.questions.size());
-
-        setTextFieldWithQuestionAtIndex();
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            Intent i = new Intent(getApplicationContext(),Statistics.class);
-            i.putExtra("numberQuestions", counterOfAnsweredQuestions );
-            i.putExtra("correctAnswers", counterOfCorrectAnswers);
-            i.putExtra("subject", subject);
-            i.putExtra("set", set);
-            startActivity(i);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-}
