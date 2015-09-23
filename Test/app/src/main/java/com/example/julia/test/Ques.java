@@ -1,6 +1,7 @@
 package com.example.julia.test;
 
-import android.annotation.TargetApi;
+
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
@@ -12,6 +13,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -31,8 +33,10 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private int counterOfAnsweredQuestions;
     private int counterOfCorrectAnswers;
     private String subject;
+    private ProgressBar downloadProgress;
     private String set;
     private View.OnClickListener cL;
+    private int mProgressStatus = 0;
 
     ArrayList<QuestionsObject> questions = new ArrayList<QuestionsObject>();
     Random rGen = new Random();
@@ -52,8 +56,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         set = getIntent().getStringExtra("set");
         setupDataProvider();
         handleUserInput();
-
-
+        downloadProgress = (ProgressBar)findViewById(R.id.progressBar);
     }
 
     private void setupDataProvider() {
@@ -73,7 +76,6 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private void handleUserInput() {
         cL = new View.OnClickListener() {
 
-            @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 
             @Override
             public void onClick(View v) {
@@ -202,8 +204,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             public void onQuestionsDownloaded(ArrayList<QuestionsObject> questions) {
                 this.questions = questions;
                 System.out.println(questions.size());
-
-
+                downloadProgress.setVisibility(View.INVISIBLE);
                 setTextFieldWithQuestionAtIndex();
                 option_a.setOnClickListener(cL);
                 option_b.setOnClickListener(cL);
