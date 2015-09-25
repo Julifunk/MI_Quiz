@@ -1,12 +1,10 @@
 package com.example.julia.test;
 
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
@@ -29,6 +27,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private TextView option_b;
     private TextView option_c;
     private TextView option_d;
+    private TextView shownQuestion;
     private String correctAnswer;
     private int counterOfAnsweredQuestions;
     private int counterOfCorrectAnswers;
@@ -71,6 +70,8 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         option_b = (TextView) findViewById(R.id.option_b);
         option_c = (TextView) findViewById(R.id.option_c);
         option_d = (TextView) findViewById(R.id.option_d);
+        shownQuestion= (TextView) findViewById(R.id.current_question);
+        shownQuestion.setText(currentQuestion + "/15");
     }
 
     private void handleUserInput() {
