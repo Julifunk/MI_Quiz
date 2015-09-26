@@ -23,7 +23,6 @@
             android:text="Fragen werden geladen ..."
             android:id="@+id/question"
             android:layout_marginTop="0dp"
-            
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
             android:background="@drawable/border_of_question"
@@ -51,7 +50,11 @@
             android:visibility="visible"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:backgroundTint="@color/GrünDunkler"
+            android:progressBackgroundTint="@color/GrünDunkel"
+            android:progressDrawable="@color/GrünDunkel" />
     </RelativeLayout>
 
 

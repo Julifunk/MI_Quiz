@@ -34,8 +34,9 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     private String subject;
     private ProgressBar downloadProgress;
     private String set;
+    private int initialNumberOfQuestionsInList;
     private View.OnClickListener cL;
-    private int mProgressStatus = 0;
+
 
     ArrayList<QuestionsObject> questions = new ArrayList<QuestionsObject>();
     Random rGen = new Random();
@@ -55,7 +56,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         set = getIntent().getStringExtra("set");
         setupDataProvider();
         handleUserInput();
-        downloadProgress = (ProgressBar)findViewById(R.id.progressBar);
+
     }
 
     private void setupDataProvider() {
@@ -70,12 +71,13 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
         option_b = (TextView) findViewById(R.id.option_b);
         option_c = (TextView) findViewById(R.id.option_c);
         option_d = (TextView) findViewById(R.id.option_d);
+        downloadProgress = (ProgressBar)findViewById(R.id.progressBar);
         shownQuestion= (TextView) findViewById(R.id.current_question);
-        shownQuestion.setText(currentQuestion + "/15");
+
     }
 
     private void handleUserInput() {
-        cL = new View.OnClickListener() {
+       cL = new View.OnClickListener() {
 
 
             @Override
@@ -115,7 +117,6 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                    }
                 }
 
-
                     showCorrectAnswer();
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -128,6 +129,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
                             currentQuestion++;
                             setTextFieldWithQuestionAtIndex();
                             counterOfAnsweredQuestions++;
+                            shownQuestion.setText(""+(counterOfAnsweredQuestions + 1)+"/" + initialNumberOfQuestionsInList);
                         }
                     }, 1000);
 
@@ -137,29 +139,29 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             };
         };}
 
-            private void showCorrectAnswer() {
-                int delay = 300;
-                ColorDrawable frame1 = new ColorDrawable(getResources().getColor(R.color.GrünHell));
-                ColorDrawable frame2 = new ColorDrawable(getResources().getColor(R.color.GrünDunkler));
-                AnimationDrawable a = new AnimationDrawable();
-                a.addFrame(frame1, delay);
-                a.addFrame(frame2, delay);
-                a.setOneShot(true);
+    private void showCorrectAnswer() {
+        int delay = 300;
+            ColorDrawable frame1 = new ColorDrawable(getResources().getColor(R.color.GrünHell));
+            ColorDrawable frame2 = new ColorDrawable(getResources().getColor(R.color.GrünDunkler));
+            AnimationDrawable a = new AnimationDrawable();
+            a.addFrame(frame1, delay);
+            a.addFrame(frame2, delay);
+            a.setOneShot(true);
 
-                if (isCorrectAnswer(option_a.getText().toString())) {
-                    option_a.setBackgroundDrawable(a);
-                    a.start();
-                } else if (isCorrectAnswer(option_b.getText().toString())) {
-                    option_b.setBackgroundDrawable(a);
-                    a.start();
-                } else if (isCorrectAnswer(option_c.getText().toString())) {
-                    option_c.setBackgroundDrawable(a);
-                    a.start();
-                } else if (isCorrectAnswer(option_d.getText().toString())) {
-                    option_d.setBackgroundDrawable(a);
-                    a.start();
-                }
+            if (isCorrectAnswer(option_a.getText().toString())) {
+                option_a.setBackgroundDrawable(a);
+                a.start();
+            } else if (isCorrectAnswer(option_b.getText().toString())) {
+                 option_b.setBackgroundDrawable(a);
+                 a.start();
+            } else if (isCorrectAnswer(option_c.getText().toString())) {
+                 option_c.setBackgroundDrawable(a);
+                 a.start();
+            } else if (isCorrectAnswer(option_d.getText().toString())) {
+                 option_d.setBackgroundDrawable(a);
+                 a.start();
             }
+    }
 
 
             //gets a random Question from ArrayList<QuestionsObject> and removes it after usage
@@ -204,6 +206,8 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             @Override
             public void onQuestionsDownloaded(ArrayList<QuestionsObject> questions) {
                 this.questions = questions;
+                initialNumberOfQuestionsInList = questions.size();
+                shownQuestion.setText(""+(counterOfAnsweredQuestions + 1)+"/" + initialNumberOfQuestionsInList);
                 System.out.println(questions.size());
                 downloadProgress.setVisibility(View.INVISIBLE);
                 setTextFieldWithQuestionAtIndex();
