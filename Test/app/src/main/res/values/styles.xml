@@ -23,10 +23,12 @@
     <style name="MyActionBar"
         parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/GrünHell</item>
-
+        <item name="android:windowAnimationStyle">@null</item>
         <!-- Support library compatibility -->
         <item name="background">@color/GrünHell</item>
     </style>
+
+
 
 
 </resources>
