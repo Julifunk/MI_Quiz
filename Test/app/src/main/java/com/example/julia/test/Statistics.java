@@ -39,11 +39,10 @@ public class Statistics extends ActionBarActivity{
         setupUIComponents();
         getStatisticsFromQuiz();
         setTextView();
-        rating = percentage.getText().toString() + "%";
+        rating = percentage.getText().toString();
         sets = getIntent().getStringExtra("set");
         subjects = getIntent().getStringExtra("subject");
         db.insertRow(subjects, sets, rating);
-
         handleClicks();
 
     }
@@ -100,11 +99,7 @@ public class Statistics extends ActionBarActivity{
             percentage.setText(R.string.error_no_answerded_questions);
 
         }
-
     }
-
-
-
 
     private void getStatisticsFromQuiz() {
        numberOfcorrectlyAnsweredQuestions = getIntent().getIntExtra("correctAnswers", 0);

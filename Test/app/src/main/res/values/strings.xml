@@ -16,5 +16,6 @@
     <string name="back_to_set">Zurück zur Schwierigkeits-Auswahl </string>
     <string name="choose_difficult">Wähle die Schwierigkeit aus:</string>
     <string name="title_overall_statistics">Allgemeine Statistik</string>
+    <string name="delete_stats_items">    Alle Einträge löschen       </string>
 
 </resources>

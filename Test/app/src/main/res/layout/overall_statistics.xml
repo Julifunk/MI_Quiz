@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/HeidenelkenrotOriginal"
     android:layout_height="match_parent">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:textStyle="bold"
+        android:textColor="@color/GelbHeller"
         android:text="@string/title_overall_statistics"/>
 
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="391dp"
+        android:background="@color/GelbHeller"
         android:id="@+id/stats_list_view"></ListView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/button_delete_all_statistics_items"
+        android:text="@string/delete_stats_items"
+        android:background="@drawable/border_of_buttons_subjects"
+        android:clickable="true"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/activity_horizontal_margin" /> />
 
 </LinearLayout>

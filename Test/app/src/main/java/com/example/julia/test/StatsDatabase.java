@@ -50,16 +50,13 @@ public class StatsDatabase {
     private DatabaseHelper myDBHelper;
     private SQLiteDatabase db;
 
-    /////////////////////////////////////////////////////////////////////
-    //	Public methods:
-    /////////////////////////////////////////////////////////////////////#
 
-    public StatsDatabase(Context ctx) {
-        this.context = ctx;
+    public StatsDatabase(Context c) {
+        this.context = c;
         myDBHelper = new DatabaseHelper(context);
     }
 
-    // Open the database connection.
+    // Opens the database
     public StatsDatabase open() {
         db = myDBHelper.getWritableDatabase();
         return this;
@@ -118,7 +115,7 @@ public class StatsDatabase {
     }
 
     // Change an existing row to be equal to new data.
-    public boolean updateRow(long rowId, String subject, String set, Integer rating) {
+    public boolean updateRow(long rowId, String subject, String set, String rating) {
         String where = KEY_ROWID + "=" + rowId;
 
 		/*
@@ -149,15 +146,8 @@ public class StatsDatabase {
         }
 
         @Override
-        public void onUpgrade(SQLiteDatabase _db, int oldVersion, int newVersion) {
-            System.out.println(TAG + "Upgrading application's database from version " + oldVersion
-                    + " to " + newVersion + ", which will destroy all old data!");
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-            // Destroy old database:
-            _db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
-
-            // Recreate new database:
-            onCreate(_db);
         }
 
 

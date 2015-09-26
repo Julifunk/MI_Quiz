@@ -7,7 +7,9 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -20,15 +22,26 @@ public class OverallStatistics extends ActionBarActivity {
 
     private StatsDatabase db;
     private ListView myStatsList;
+    private TextView deleteAllItemsButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.overall_statistics);
-        myStatsList = (ListView)findViewById(R.id.stats_list_view);
         openDB();
+        myStatsList = (ListView)findViewById(R.id.stats_list_view);
+        deleteAllItemsButton = (TextView) findViewById(R.id.button_delete_all_statistics_items);
+        deleteAllItemsButton.setVisibility(View.INVISIBLE);
 
+        deleteAllItemsButton.setVisibility(View.VISIBLE);
+        deleteAllItemsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    db.deleteAll();
+                    fillOverallStatsList();
+                }
+            });
 
         fillOverallStatsList();
 
@@ -56,13 +69,6 @@ public class OverallStatistics extends ActionBarActivity {
         // Set the adapter for the list view
         myStatsList.setAdapter(myCursorAdapter);
     }
-
-
-
-
-
-
-
 
 
     @Override
