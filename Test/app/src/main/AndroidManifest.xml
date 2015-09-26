@@ -4,11 +4,12 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-sdk android:minSdkVersion="4.0"/>
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="21" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/na_logo"
+        android:icon="@drawable/na_logo"
+        android:logo="@drawable/na_logo"
         android:name="com.example.julia.test.ParseApplication"
         android:label="@string/app_name"
         android:theme="@style/CustomActionBarTheme"
@@ -16,8 +17,10 @@
         >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
             android:icon="@drawable/na_logo"
+            android:logo="@drawable/na_logo"
+            android:label="@string/app_name"
+
             android:configChanges="orientation|screenSize">
 
             <intent-filter>
@@ -28,21 +31,39 @@
         </activity>
         <activity
             android:name=".StartingGameActivity"
+            android:icon="@drawable/na_logo"
+            android:logo="@drawable/na_logo"
             android:label="@string/app_name"
+            android:parentActivityName=".MainActivity"
             android:configChanges="orientation|screenSize">
         </activity>
         <activity
             android:name=".SetDifficulty"
             android:label= "@string/app_name"
+            android:parentActivityName=".MainActivity"
             android:configChanges="orientation|screenSize">
         </activity>
         <activity
             android:name=".Ques"
+            android:icon="@drawable/na_logo"
+            android:logo="@drawable/na_logo"
             android:label= "Quiz"
+            android:parentActivityName=".MainActivity"
             android:configChanges="orientation|screenSize">
         </activity>
         <activity
             android:name=".Statistics"
+            android:icon="@drawable/na_logo"
+            android:logo="@drawable/na_logo"
+            android:parentActivityName=".MainActivity"
+            android:label="Statistik"
+            android:configChanges="orientation|screenSize">
+        </activity>
+        <activity
+            android:name=".OverallStatistics"
+            android:icon="@drawable/na_logo"
+            android:logo="@drawable/na_logo"
+            android:parentActivityName=".MainActivity"
             android:label="Statistik"
             android:configChanges="orientation|screenSize">
         </activity>

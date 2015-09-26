@@ -15,5 +15,6 @@
     <string name="back_to_subject">Zurück zur Fachauswahl </string>
     <string name="back_to_set">Zurück zur Schwierigkeits-Auswahl </string>
     <string name="choose_difficult">Wähle die Schwierigkeit aus:</string>
+    <string name="title_overall_statistics">Allgemeine Statistik</string>
 
-    </resources>
+</resources>

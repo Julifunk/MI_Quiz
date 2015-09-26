@@ -43,6 +43,7 @@
                     android:background="@drawable/progress_bar_negative"/>
             </LinearLayout>
 
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"

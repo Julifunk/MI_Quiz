@@ -56,7 +56,7 @@ public class MainActivity extends Activity{
         stats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Statistics.class);
+                Intent i = new Intent(getApplicationContext(), OverallStatistics.class);
                 startActivity(i);
             }
         });

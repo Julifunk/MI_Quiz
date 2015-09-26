@@ -234,11 +234,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
                 //noinspection SimplifiableIfStatement
                 if (id == R.id.action_settings) {
-                    Intent i = new Intent(getApplicationContext(), Statistics.class);
-                    i.putExtra("numberQuestions", counterOfAnsweredQuestions);
-                    i.putExtra("correctAnswers", counterOfCorrectAnswers);
-                    i.putExtra("subject", subject);
-                    i.putExtra("set", set);
+                    Intent i = new Intent(getApplicationContext(), OverallStatistics.class);
                     startActivity(i);
                     return true;
                 }

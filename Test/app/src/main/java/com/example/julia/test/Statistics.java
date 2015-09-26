@@ -1,11 +1,14 @@
 package com.example.julia.test;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 /**
  * Created by Julia on 06.09.2015.
@@ -20,6 +23,11 @@ public class Statistics extends ActionBarActivity{
     private TextView percentage;
     private TextView backToSets;
     private TextView backToSubjects;
+    private ListView listView;
+    private String sets;
+    private String subjects;
+    private String rating;
+    private StatsDatabase db;
 
     private View.OnClickListener cL;
 
@@ -27,12 +35,24 @@ public class Statistics extends ActionBarActivity{
     protected void onCreate (Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_statistics);
+        openDB();
         setupUIComponents();
         getStatisticsFromQuiz();
         setTextView();
+        rating = percentage.getText().toString() + "%";
+        sets = getIntent().getStringExtra("set");
+        subjects = getIntent().getStringExtra("subject");
+        db.insertRow(subjects, sets, rating);
+
         handleClicks();
 
     }
+
+    private void openDB() {
+        db = new StatsDatabase(this);
+        db.open();
+    }
+
 
     private void setupUIComponents() {
         display = getWindowManager().getDefaultDisplay();
@@ -42,9 +62,7 @@ public class Statistics extends ActionBarActivity{
         percentage = (TextView)findViewById(R.id.Percentage);
         backToSets = (TextView)findViewById(R.id.back_to_sets);
         backToSubjects = (TextView)findViewById(R.id.back_to_subjects);
-
-
-
+        listView = (ListView)findViewById(R.id.stats_list_view);
     }
 
     //setting clickable Layout-Items on Clicklistener
@@ -54,7 +72,6 @@ public class Statistics extends ActionBarActivity{
 
             @Override
             public void onClick(View v) {
-
                if(v.equals(backToSets)){
                    Intent i = new Intent(getApplicationContext(), SetDifficulty.class);
                    i.putExtra("subject", getIntent().getStringExtra("subject"));
@@ -64,8 +81,6 @@ public class Statistics extends ActionBarActivity{
                     Intent i = new Intent(getApplicationContext(), StartingGameActivity.class);
                     startActivity(i);
                 }
-
-
             }
         };
 
@@ -87,6 +102,8 @@ public class Statistics extends ActionBarActivity{
         }
 
     }
+
+
 
 
     private void getStatisticsFromQuiz() {
