@@ -12,3 +12,7 @@ Class: OverallStatistics
 Method: fillOverallStatsList
 How to populate GridView from Database
 http://developer.android.com/reference/android/widget/SimpleCursorAdapter.html[25.09.2015]
+
+Class: QuestionsDataProvider
+Method: getQuestionsFromSubjectAndSet
+https://parse.com/docs/android/api/com/parse/ParseQuery.html [10.09.2015]
