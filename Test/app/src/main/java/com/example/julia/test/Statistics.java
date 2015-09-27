@@ -7,6 +7,7 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Display;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,7 +24,7 @@ public class Statistics extends ActionBarActivity{
     private TextView percentage;
     private TextView backToSets;
     private TextView backToSubjects;
-    private ListView listView;
+    private GridView listView;
     private String sets;
     private String subjects;
     private String rating;
@@ -42,7 +43,12 @@ public class Statistics extends ActionBarActivity{
         rating = percentage.getText().toString();
         sets = getIntent().getStringExtra("set");
         subjects = getIntent().getStringExtra("subject");
-        db.insertRow(subjects, sets, rating);
+        if(!db.rowExists(subjects, sets)) {
+            db.insertRow(subjects, sets, rating);
+        }
+        else {
+            db.updateRow(subjects, sets, rating);
+        }
         handleClicks();
 
     }
@@ -61,7 +67,7 @@ public class Statistics extends ActionBarActivity{
         percentage = (TextView)findViewById(R.id.Percentage);
         backToSets = (TextView)findViewById(R.id.back_to_sets);
         backToSubjects = (TextView)findViewById(R.id.back_to_subjects);
-        listView = (ListView)findViewById(R.id.stats_list_view);
+        listView = (GridView)findViewById(R.id.stats_list_view);
     }
 
     //setting clickable Layout-Items on Clicklistener
@@ -103,7 +109,7 @@ public class Statistics extends ActionBarActivity{
 
     private void getStatisticsFromQuiz() {
        numberOfcorrectlyAnsweredQuestions = getIntent().getIntExtra("correctAnswers", 0);
-       numberOfAnsweredQuestions = getIntent().getIntExtra("numberQuestions", 0);
+       numberOfAnsweredQuestions = getIntent().getIntExtra("numberQuestions", 0)-1;
        correctAnswers.requestLayout();
        wrongAnswers.requestLayout();
        if(numberOfAnsweredQuestions != 0) {

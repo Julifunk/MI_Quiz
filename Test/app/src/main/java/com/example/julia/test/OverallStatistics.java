@@ -8,10 +8,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import java.util.List;
 
 
 /**
@@ -21,7 +21,7 @@ import java.util.List;
 public class OverallStatistics extends ActionBarActivity {
 
     private StatsDatabase db;
-    private ListView myStatsList;
+    private GridView myStatsList;
     private TextView deleteAllItemsButton;
 
 
@@ -30,7 +30,7 @@ public class OverallStatistics extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.overall_statistics);
         openDB();
-        myStatsList = (ListView)findViewById(R.id.stats_list_view);
+        myStatsList = (GridView)findViewById(R.id.stats_list_view);
         deleteAllItemsButton = (TextView) findViewById(R.id.button_delete_all_statistics_items);
         deleteAllItemsButton.setVisibility(View.INVISIBLE);
 
@@ -44,6 +44,12 @@ public class OverallStatistics extends ActionBarActivity {
             });
 
         fillOverallStatsList();
+        manipulateViews();
+        handleClicksOnGrid();
+
+    }
+
+    private void manipulateViews() {
 
 
     }
@@ -55,20 +61,31 @@ public class OverallStatistics extends ActionBarActivity {
     }
 
     private void fillOverallStatsList() {
-        Cursor cursor = db.getAllRows();
-        startManagingCursor(cursor);
-
-        // Setup mapping from cursor to view fields:
+        Cursor cursor = db.getData();
         String[] fromFieldNames = new String[] {StatsDatabase.KEY_SUBJECT, StatsDatabase.KEY_SETS, StatsDatabase.KEY_RATING};
         int[] toViewIDs = new int[] {R.id.subject_for_statsItem, R.id.set_for_statsItem, R.id.rating_for_statsItem};
-
-        // Create adapter to may columns of the DB onto elemesnt in the UI.
         SimpleCursorAdapter myCursorAdapter = new SimpleCursorAdapter(this,	R.layout.statistics_item, cursor, fromFieldNames,toViewIDs);
-
-
-        // Set the adapter for the list view
         myStatsList.setAdapter(myCursorAdapter);
     }
+
+
+
+    private void handleClicksOnGrid(){
+        myStatsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                TextView subject = (TextView)v.findViewById(R.id.subject_for_statsItem);
+                TextView set = (TextView)v.findViewById(R.id.set_for_statsItem);
+                Intent i = new Intent(getApplicationContext(), Ques.class);
+                i.putExtra("subject", subject.getText());
+                i.putExtra("set", set.getText());
+                startActivity(i);
+
+            }
+        });
+    }
+
+
+
 
 
     @Override

@@ -13,11 +13,12 @@
         android:text="@string/title_overall_statistics"/>
 
 
-    <ListView
+    <GridView
         android:layout_width="match_parent"
         android:layout_height="391dp"
         android:background="@color/GelbHeller"
-        android:id="@+id/stats_list_view"></ListView>
+        android:id="@+id/stats_list_view"
+        android:numColumns="4"></GridView>
 
 
     <TextView

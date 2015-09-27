@@ -3,6 +3,7 @@ package com.example.julia.test;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -10,31 +11,15 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by Julia on 26.09.2015.
  */
 public class StatsDatabase {
-    private static final String TAG = "DBAdapter";
 
-    // DB Fields
     public static final String KEY_ROWID = "_id";
-    public static final int COL_ROWID = 0;
-    /*
-     * CHANGE 1:
-     */
-    // TODO: Setup your fields here:
     public static final String KEY_SUBJECT = "subject";
     public static final String KEY_SETS = "sets";
     public static final String KEY_RATING = "rating";
 
-    // TODO: Setup your field numbers here (0 = KEY_ROWID, 1=...)
-    public static final int COL_SUBJECT = 1;
-    public static final int COL_SETS= 2;
-    public static final int COL_RATING = 3;
-
-
     public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_SUBJECT, KEY_SETS, KEY_RATING};
-
-    // DB info: it's name, and the table we are using (just one).
     public static final String DATABASE_NAME = "MyDb";
     public static final String DATABASE_TABLE = "mainTable";
-    // Track DB version if a new version of your app changes the format.
     public static final int DATABASE_VERSION = 2;
 
     private static final String DATABASE_CREATE_SQL =
@@ -45,8 +30,7 @@ public class StatsDatabase {
                     + KEY_RATING + " string not null"
                     + ");";
 
-    // Context of application who uses us.
-    private final Context context;
+    private Context context;
     private DatabaseHelper myDBHelper;
     private SQLiteDatabase db;
 
@@ -56,81 +40,85 @@ public class StatsDatabase {
         myDBHelper = new DatabaseHelper(context);
     }
 
-    // Opens the database
+
     public StatsDatabase open() {
         db = myDBHelper.getWritableDatabase();
         return this;
     }
 
-    // Close the database connection.
+
     public void close() {
         myDBHelper.close();
     }
 
 
-    public long insertRow(String subject, String sets, String rating) {
-		ContentValues initialValues = new ContentValues();
-        initialValues.put(KEY_SUBJECT, subject);
-        initialValues.put(KEY_SETS, sets);
-        initialValues.put(KEY_RATING, rating);
-        return db.insert(DATABASE_TABLE, null, initialValues);
+    //inserts a new data row into database
+    public long insertRow(String subject, String sets, String rating)
+    {
+		ContentValues newValues = new ContentValues();
+        newValues.put(KEY_SUBJECT, subject);
+        newValues.put(KEY_SETS, sets);
+        newValues.put(KEY_RATING, rating);
+        return db.insert(DATABASE_TABLE, null, newValues);
     }
 
-    public boolean deleteRow(long rowId) {
+    public int deleteRow(int rowId)
+    {
         String where = KEY_ROWID + "=" + rowId;
-        return db.delete(DATABASE_TABLE, where, null) != 0;
+        return db.delete(DATABASE_TABLE, where, null);
     }
 
-    public void deleteAll() {
-        Cursor c = getAllRows();
-        long rowId = c.getColumnIndexOrThrow(KEY_ROWID);
-        if (c.moveToFirst()) {
+    public void deleteAll()
+    {
+        Cursor cursor = getData();
+        long rowId = cursor.getColumnIndexOrThrow(KEY_ROWID);
+        if (cursor.moveToFirst())
+        {
             do {
-                deleteRow(c.getLong((int) rowId));
-            } while (c.moveToNext());
+                deleteRow(cursor.getInt((int) rowId));
+            } while (cursor.moveToNext());
         }
-        c.close();
+        cursor.close();
     }
 
-    // Return all data in the database.
-    public Cursor getAllRows() {
+    // get all data from database
+    public Cursor getData()
+    {
         String where = null;
         Cursor c = 	db.query(true, DATABASE_TABLE, ALL_KEYS,
                 where, null, null, null, null, null);
-        if (c != null) {
+        if (c != null)
+        {
             c.moveToFirst();
         }
         return c;
     }
 
-    // Get a specific row (by rowId)
-    public Cursor getRow(long rowId) {
-        String where = KEY_ROWID + "=" + rowId;
-        Cursor c = 	db.query(true, DATABASE_TABLE, ALL_KEYS,
-                where, null, null, null, null, null);
-        if (c != null) {
-            c.moveToFirst();
-        }
-        return c;
-    }
 
-    // Change an existing row to be equal to new data.
-    public boolean updateRow(long rowId, String subject, String set, String rating) {
-        String where = KEY_ROWID + "=" + rowId;
 
-		/*
-		 * CHANGE 4:
-		 */
-        // TODO: Update data in the row with new fields.
-        // TODO: Also change the function's arguments to be what you need!
-        // Create row's data:
+    // Insert new data in existing row
+    public int updateRow(String subject, String set, String rating)
+    {
+        String where = KEY_SUBJECT + "=" + "'" + subject + "'" + "AND " + KEY_SETS + "=" + "'" + set + "'";
         ContentValues newValues = new ContentValues();
         newValues.put(KEY_SUBJECT, subject);
         newValues.put(KEY_SETS, set);
         newValues.put(KEY_RATING, rating);
+        return db.update(DATABASE_TABLE, newValues, where, null);
+    }
 
-        // Insert it into the database.
-        return db.update(DATABASE_TABLE, newValues, where, null) != 0;
+    public boolean rowExists(String subjects, String sets)
+    {
+        String where = KEY_SUBJECT + "=" + "'" + subjects + "'" + "AND " + KEY_SETS + "=" + "'" + sets + "'";
+        long count = DatabaseUtils.queryNumEntries(db, DATABASE_TABLE, where);
+        if(count > 0)
+        {
+            return true;
+        }
+        else
+        {
+             return false;
+        }
     }
 
 
