@@ -7,9 +7,6 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by Julia on 26.09.2015.
- */
 public class StatsDatabase {
 
     public static final String KEY_ROWID = "_id";
@@ -47,14 +44,8 @@ public class StatsDatabase {
     }
 
 
-    public void close() {
-        myDBHelper.close();
-    }
-
-
     //inserts a new data row into database
-    public long insertRow(String subject, String sets, String rating)
-    {
+    public long insertRow(String subject, String sets, String rating){
 		ContentValues newValues = new ContentValues();
         newValues.put(KEY_SUBJECT, subject);
         newValues.put(KEY_SETS, sets);
@@ -62,18 +53,15 @@ public class StatsDatabase {
         return db.insert(DATABASE_TABLE, null, newValues);
     }
 
-    public int deleteRow(int rowId)
-    {
+    public int deleteRow(int rowId){
         String where = KEY_ROWID + "=" + rowId;
         return db.delete(DATABASE_TABLE, where, null);
     }
 
-    public void deleteAll()
-    {
+    public void deleteAll(){
         Cursor cursor = getData();
         long rowId = cursor.getColumnIndexOrThrow(KEY_ROWID);
-        if (cursor.moveToFirst())
-        {
+        if (cursor.moveToFirst()){
             do {
                 deleteRow(cursor.getInt((int) rowId));
             } while (cursor.moveToNext());
@@ -82,13 +70,11 @@ public class StatsDatabase {
     }
 
     // get all data from database
-    public Cursor getData()
-    {
+    public Cursor getData(){
         String where = null;
         Cursor c = 	db.query(true, DATABASE_TABLE, ALL_KEYS,
                 where, null, null, null, null, null);
-        if (c != null)
-        {
+        if (c != null){
             c.moveToFirst();
         }
         return c;
@@ -97,8 +83,7 @@ public class StatsDatabase {
 
 
     // Insert new data in existing row
-    public int updateRow(String subject, String set, String rating)
-    {
+    public int updateRow(String subject, String set, String rating){
         String where = KEY_SUBJECT + "=" + "'" + subject + "'" + "AND " + KEY_SETS + "=" + "'" + set + "'";
         ContentValues newValues = new ContentValues();
         newValues.put(KEY_SUBJECT, subject);
@@ -107,23 +92,19 @@ public class StatsDatabase {
         return db.update(DATABASE_TABLE, newValues, where, null);
     }
 
-    public boolean rowExists(String subjects, String sets)
-    {
+    public boolean rowExists(String subjects, String sets){
         String where = KEY_SUBJECT + "=" + "'" + subjects + "'" + "AND " + KEY_SETS + "=" + "'" + sets + "'";
         long count = DatabaseUtils.queryNumEntries(db, DATABASE_TABLE, where);
-        if(count > 0)
-        {
+        if(count > 0){
             return true;
         }
-        else
-        {
+        else{
              return false;
         }
     }
 
 
-    private static class DatabaseHelper extends SQLiteOpenHelper
-    {
+    private static class DatabaseHelper extends SQLiteOpenHelper{
         DatabaseHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Display;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -24,7 +26,7 @@ public class Statistics extends ActionBarActivity{
     private TextView percentage;
     private TextView backToSets;
     private TextView backToSubjects;
-    private GridView listView;
+
     private String sets;
     private String subjects;
     private String rating;
@@ -67,7 +69,7 @@ public class Statistics extends ActionBarActivity{
         percentage = (TextView)findViewById(R.id.Percentage);
         backToSets = (TextView)findViewById(R.id.back_to_sets);
         backToSubjects = (TextView)findViewById(R.id.back_to_subjects);
-        listView = (GridView)findViewById(R.id.stats_list_view);
+
     }
 
     //setting clickable Layout-Items on Clicklistener
@@ -107,6 +109,9 @@ public class Statistics extends ActionBarActivity{
         }
     }
 
+    //getting correctly and alltogether answered questions from intent
+    //calculating percentage
+    //setting Imageview accordingly
     private void getStatisticsFromQuiz() {
        numberOfcorrectlyAnsweredQuestions = getIntent().getIntExtra("correctAnswers", 0);
        numberOfAnsweredQuestions = getIntent().getIntExtra("numberQuestions", 0)-1;
@@ -119,4 +124,23 @@ public class Statistics extends ActionBarActivity{
            percentage.setText(R.string.error_no_answerded_questions);
        }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.menu_item_statistics) {
+            Intent i = new Intent(getApplicationContext(), OverallStatistics.class);
+            startActivity(i);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

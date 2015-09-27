@@ -2,15 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:background="@color/HeidenelkenrotOriginal"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:textStyle="bold"
-        android:textColor="@color/GelbHeller"
-        android:text="@string/title_overall_statistics"/>
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
 
     <GridView
@@ -18,7 +11,8 @@
         android:layout_height="391dp"
         android:background="@color/GelbHeller"
         android:id="@+id/stats_list_view"
-        android:numColumns="4"></GridView>
+        android:numColumns="4"
+        android:layout_weight="0.72"></GridView>
 
     <TextView
         android:layout_width="wrap_content"

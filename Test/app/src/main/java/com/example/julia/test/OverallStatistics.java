@@ -10,14 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 
-/**
-/**
- * Created by Julia on 26.09.2015.
- */
 public class OverallStatistics extends ActionBarActivity {
 
     private StatsDatabase db;
@@ -32,15 +27,11 @@ public class OverallStatistics extends ActionBarActivity {
         openDB();
         myStatsList = (GridView)findViewById(R.id.stats_list_view);
         fillOverallStatsList();
-        manipulateViews();
         handleClicksOnGrid();
 
     }
 
-    private void manipulateViews() {
 
-
-    }
 
 
     private void openDB() {
@@ -48,6 +39,8 @@ public class OverallStatistics extends ActionBarActivity {
         db.open();
     }
 
+    //getting data from database for grid-view
+    //mapping data directly on cursorAdapter
     private void fillOverallStatsList() {
         Cursor cursor = db.getData();
         String[] fromFieldNames = new String[] {StatsDatabase.KEY_SUBJECT, StatsDatabase.KEY_SETS, StatsDatabase.KEY_RATING};
@@ -57,7 +50,7 @@ public class OverallStatistics extends ActionBarActivity {
     }
 
 
-
+    //starting intent with subject and set from clicked grid-item
     private void handleClicksOnGrid(){
         myStatsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
@@ -70,15 +63,13 @@ public class OverallStatistics extends ActionBarActivity {
 
             }
         });
+
     }
-
-
 
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_for_overall_statistics, menu);
 
         return true;
@@ -89,8 +80,6 @@ public class OverallStatistics extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.delete_all_statistics_items) {
             db.deleteAll();
             fillOverallStatsList();

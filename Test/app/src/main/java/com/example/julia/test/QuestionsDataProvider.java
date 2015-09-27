@@ -23,20 +23,8 @@ public class QuestionsDataProvider {
         this.listener = listener;
     }
 
-    public void getQuestionsFromSubject(String subject) {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Question");
-        query.whereEqualTo("subject", subject);
-        query.orderByAscending("objectId");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> list, ParseException e) {
-                if (e == null) {
-                    listener.onQuestionsDownloaded(parseQuestionsAsArrayList(list));
-                }
-            }
-        });
-    }
 
+    //getting data from respective subject and set from parse.com
     public void getQuestionsFromSubjectAndSet(String subject, String set) {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Question");
         query.whereEqualTo("subject", subject);
@@ -52,13 +40,12 @@ public class QuestionsDataProvider {
         });
     }
 
+    //mapping data from parse in ArrayList
     private ArrayList<QuestionsObject> parseQuestionsAsArrayList(List<ParseObject> parseQuestions) {
-        ArrayList<QuestionsObject> questions = new ArrayList<QuestionsObject>();
-
+        ArrayList<QuestionsObject> questions = new ArrayList<>();
         for (ParseObject object : parseQuestions) {
             questions.add(new QuestionsObject(object));
         }
-        System.out.println(questions.size());
         return questions;
     }
 

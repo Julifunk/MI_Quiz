@@ -76,6 +76,10 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
     }
 
+    //handle user clicks
+    //checking if answer is correct
+    //giving feedback if answer is correct, if needed showing correct answer
+    //setting textviews with next question
     private void handleUserInput() {
        cL = new View.OnClickListener() {
 
@@ -139,6 +143,8 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             };
         };}
 
+    //starting short animation to indicate correct answer
+    //Source: http://stackoverflow.com/questions/15331361/flashing-background [20.09.2015]
     private void showCorrectAnswer() {
         int delay = 300;
             ColorDrawable frame1 = new ColorDrawable(getResources().getColor(R.color.GrünHell));
@@ -164,7 +170,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
     }
 
 
-            //gets a random Question from ArrayList<QuestionsObject> and removes it after usage
+            //get a random Question from ArrayList<QuestionsObject> and remove it after usage
             private void setTextFieldWithQuestionAtIndex() {
                 if (questions.size() < 1) {
                     Intent i = new Intent(getApplicationContext(), Statistics.class);
@@ -185,7 +191,7 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
             }
 
 
-            //displays the current question
+            //display the current question
             private void displayQuestion(QuestionsObject currentQuestion) {
                 question.setText(currentQuestion.getQuestion());
                 option_a.setText(currentQuestion.getOptionA());
@@ -196,19 +202,22 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
             }
 
-
             private boolean isCorrectAnswer(String selectedAnswer) {
                 return selectedAnswer.equals(correctAnswer);
             }
 
+            //
+            //Interface Methods for QuestionsDataProviderListener
+            //
 
-            // Interface Methods
+            //setting questionsList
+            //setting up initial question
+            //givin feedback to user if questions are being loaded
             @Override
             public void onQuestionsDownloaded(ArrayList<QuestionsObject> questions) {
                 this.questions = questions;
                 initialNumberOfQuestionsInList = questions.size();
                 shownQuestion.setText(""+(counterOfAnsweredQuestions + 1)+"/" + initialNumberOfQuestionsInList);
-                System.out.println(questions.size());
                 downloadProgress.setVisibility(View.INVISIBLE);
                 setTextFieldWithQuestionAtIndex();
                 option_a.setOnClickListener(cL);
@@ -220,20 +229,14 @@ public class Ques extends ActionBarActivity implements QuestionsDataProvider.Que
 
             @Override
             public boolean onCreateOptionsMenu(Menu menu) {
-                // Inflate the menu; this adds items to the action bar if it is present.
                 getMenuInflater().inflate(R.menu.menu_main, menu);
                 return true;
             }
 
             @Override
             public boolean onOptionsItemSelected(MenuItem item) {
-                // Handle action bar item clicks here. The action bar will
-                // automatically handle clicks on the Home/Up button, so long
-                // as you specify a parent activity in AndroidManifest.xml.
                 int id = item.getItemId();
-
-                //noinspection SimplifiableIfStatement
-                if (id == R.id.action_settings) {
+                if (id == R.id.menu_item_statistics) {
                     Intent i = new Intent(getApplicationContext(), OverallStatistics.class);
                     startActivity(i);
                     return true;

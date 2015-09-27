@@ -5,11 +5,9 @@ import android.app.Application;
 import com.parse.Parse;
 
 /**
- * Created by Julia on 12.09.2015.
- * Quelle: http://stackoverflow.com/questions/28721509/unable-to-start-activity-componentinfo-parse[12.09.2015]
+ * Source: http://stackoverflow.com/questions/28721509/unable-to-start-activity-componentinfo-parse[12.09.2015]
  */
     public class ParseApplication extends Application {
-
         @Override
         public void onCreate() {
             super.onCreate();

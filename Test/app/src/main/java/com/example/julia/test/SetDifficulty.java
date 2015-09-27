@@ -24,11 +24,10 @@ public class SetDifficulty extends Activity {
         setContentView(R.layout.activity_choose_difficult);
         setupUIComponents();
         handleClicks();
-
     }
 
+    //handle clicks on textviews, start Ques.acivity, put extras
     private void handleClicks() {
-
         cL = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,8 +54,6 @@ public class SetDifficulty extends Activity {
         easy.setOnClickListener(cL);
         middle.setOnClickListener(cL);
         difficult.setOnClickListener(cL);
-
-
     }
 
     private void setupUIComponents() {

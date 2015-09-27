@@ -3,6 +3,7 @@ package com.example.julia.test;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 /**
  * Created by Marcus on 06.09.2015.
  */
-public class MainActivity extends Activity{
+public class StartScreen extends Activity{
     private TextView startingGame;
     private TextView stats;
     private TextView networkError;
@@ -29,6 +30,7 @@ public class MainActivity extends Activity{
         }
     }
 
+    //alerting user, if no network connection is available
     private void showNetworkConnectionError() {
         stats = (TextView) findViewById(R.id.stats);
         stats.setVisibility(View.INVISIBLE);
@@ -62,6 +64,15 @@ public class MainActivity extends Activity{
         });
 
 
+    }
+    public void onConfigurationChanged(Configuration newConfig) {
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+               logo.setVisibility(View.INVISIBLE);
+        }
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            logo.setVisibility(View.VISIBLE);
+        }
+        super.onConfigurationChanged(newConfig);
     }
 
     private boolean isNetworkAvailable() {
