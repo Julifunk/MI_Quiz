@@ -22,7 +22,7 @@ public class OverallStatistics extends ActionBarActivity {
 
     private StatsDatabase db;
     private GridView myStatsList;
-    private TextView deleteAllItemsButton;
+
 
 
     @Override
@@ -31,18 +31,6 @@ public class OverallStatistics extends ActionBarActivity {
         setContentView(R.layout.overall_statistics);
         openDB();
         myStatsList = (GridView)findViewById(R.id.stats_list_view);
-        deleteAllItemsButton = (TextView) findViewById(R.id.button_delete_all_statistics_items);
-        deleteAllItemsButton.setVisibility(View.INVISIBLE);
-
-        deleteAllItemsButton.setVisibility(View.VISIBLE);
-        deleteAllItemsButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    db.deleteAll();
-                    fillOverallStatsList();
-                }
-            });
-
         fillOverallStatsList();
         manipulateViews();
         handleClicksOnGrid();
@@ -91,24 +79,27 @@ public class OverallStatistics extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_for_overall_statistics, menu);
+
         return true;
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+
         //noinspection SimplifiableIfStatement
-        if (id == R.id.stats) {
-            Intent i = new Intent(getApplicationContext(),Statistics.class);
-            startActivity(i);
-            return true;
+        if (id == R.id.delete_all_statistics_items) {
+            db.deleteAll();
+            fillOverallStatsList();
         }
+        if (id == R.id.back_to_subjects_menu_item) {
+            Intent i = new Intent(getApplicationContext(), StartingGameActivity.class);
+            startActivity(i);
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

@@ -17,5 +17,6 @@
     <string name="choose_difficult">Wähle die Schwierigkeit aus:</string>
     <string name="title_overall_statistics">Allgemeine Statistik</string>
     <string name="delete_stats_items">    Alle Einträge löschen       </string>
+    <string name="grid_explanation">Klicke auf die einzelnen Statistiken um deine Leistung zu verbessern</string>
 
 </resources>

@@ -20,16 +20,17 @@
         android:id="@+id/stats_list_view"
         android:numColumns="4"></GridView>
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/button_delete_all_statistics_items"
-        android:text="@string/delete_stats_items"
-        android:background="@drawable/border_of_buttons_subjects"
-        android:clickable="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/grid_explanation"
+        android:textColor="@color/GelbHeller"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/activity_horizontal_margin" /> />
+        android:id="@+id/textView" />
+
+
+
+
 
 </LinearLayout>
