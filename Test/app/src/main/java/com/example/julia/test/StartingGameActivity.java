@@ -1,5 +1,6 @@
 package com.example.julia.test;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -11,7 +12,7 @@ import android.widget.TextView;
 
 import com.parse.ParseObject;
 
-public class StartingGameActivity extends ActionBarActivity {
+public class StartingGameActivity extends Activity {
 
     private TextView eimi;
     private TextView adp;
@@ -27,6 +28,7 @@ public class StartingGameActivity extends ActionBarActivity {
         setContentView(R.layout.activity_starting_a_game);
 
         setupLayoutElements();
+
        }
 
 
@@ -83,22 +85,4 @@ public class StartingGameActivity extends ActionBarActivity {
 
     }
 
-      @Override
-      public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.stats) {
-            Intent i = new Intent(getApplicationContext(),OverallStatistics.class);
-            startActivity(i);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
